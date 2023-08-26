@@ -1,5 +1,5 @@
 const indexContoller = (req, res) => {
-  res.send("Server running");
+  res.send("Home route is working");
 };
 
 module.exports = { indexContoller };
