@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const DATABSE_URI = process.env.MONGO_URL;
+const DATABSE_URI = process.env.DATABASE_URL;
 
 const dbConnect = () => {
   mongoose
