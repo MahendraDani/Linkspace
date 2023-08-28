@@ -9,14 +9,12 @@ const signup = async (req, res) => {
         .status(statusCodes.BAD_REQUEST)
         .json({ message: "Email and password are required!" });
     } else {
-      const newUser = await new User({
+      const user = await new User({
         email,
         password,
       });
-      await newUser.save();
-      res
-        .status(statusCodes.SUCCESS)
-        .json({ message: "user created successfully", newUser });
+      await user.save();
+      res.status(statusCodes.SUCCESS).json({ user });
     }
   } catch (error) {
     console.log(error);
