@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-const DATABSE_URI = process.env.DATABASE_URL;
+const DATABASE_URI = process.env.DATABASE_URL;
+const MONGO_COMPASS_URI = "http://127.0.0.1/linkspaceDB";
 
 const dbConnect = async () => {
   await mongoose
-    .connect(DATABSE_URI, {
+    .connect(DATABASE_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })

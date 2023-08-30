@@ -5,6 +5,7 @@ const statusCodes = {
   NOT_FOUND: 404,
   SUCCESS: 200,
   SERVER_ERROR: 500,
+  CONFLICT: 409,
 };
 
 module.exports = { statusCodes };
