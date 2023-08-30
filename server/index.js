@@ -10,10 +10,17 @@ app.use(cors());
 app.use(bodyPraser.json());
 app.use(bodyPraser.urlencoded({ extended: true }));
 
+const { validateUser } = require("./middlewares/validateUser");
+
 dbConnect();
+
+app.get("/dashboard", validateUser, (req, res) => {
+  res.send("This is my top secret");
+});
 
 app.use("/", require("./routes/index"));
 app.use("/api/auth", require("./routes/auth/signup"));
+app.use("/api/auth", require("./routes/auth/login"));
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
