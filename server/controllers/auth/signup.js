@@ -30,7 +30,7 @@ const signup = async (req, res) => {
       createdAt: time,
     });
     await user.save();
-    return res.status(statusCodes.SUCCESS).send("Workgin");
+    return res.status(statusCodes.SUCCESS).json(user);
   } catch (error) {
     console.log(error);
   }
