@@ -13,7 +13,7 @@ app.use(bodyPraser.urlencoded({ extended: true }));
 dbConnect();
 
 app.use("/", require("./routes/index"));
-app.use("/auth", require("./routes/auth/signup"));
+app.use("/api/auth", require("./routes/auth/signup"));
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
