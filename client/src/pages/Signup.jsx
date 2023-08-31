@@ -13,7 +13,7 @@ const Signup = () => {
   const handleSignup = async () => {
     try {
       const response = await axios.post(
-        "https://linkspace-api.vercel.app/auth/signup",
+        "https://linkspace-api.vercel.app/api/auth/signup",
         {
           name: name,
           email: email,
