@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const handleSignup = async () => {
@@ -14,6 +15,7 @@ const Signup = () => {
       const response = await axios.post(
         "https://linkspace-api.vercel.app/auth/signup",
         {
+          name: name,
           email: email,
           password: password,
         }
@@ -53,6 +55,11 @@ const Signup = () => {
           >
             SIGN UP
           </Typography>
+          <TextField
+            label="Name"
+            variant="standard"
+            onChange={(e) => setName(e.target.value)}
+          />
           <TextField
             label="Email"
             variant="standard"
