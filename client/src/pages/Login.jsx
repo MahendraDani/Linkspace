@@ -1,28 +1,27 @@
-import React from "react";
-import { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
+  const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://linkspace-api.vercel.app/api/auth/signup",
+        "https://linkspace-api.vercel.app/api/auth/login",
         {
-          name: name,
           email: email,
           password: password,
         }
       );
-      console.log(response);
-      navigate("/login");
+      const accessToken = response.data.accessToken;
+      localStorage.setItem("token", accessToken);
+      if (accessToken) {
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -54,23 +53,22 @@ const Signup = () => {
             variant="h4"
             sx={{ textAlign: "center", fontWeight: "600", color: "#0F89E6" }}
           >
-            SIGN UP
+            LOGIN
           </Typography>
-          <TextField
-            label="Name"
-            variant="standard"
-            onChange={(e) => setName(e.target.value)}
-          />
           <TextField
             label="Email"
             variant="standard"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <TextField
             label="Password"
             variant="standard"
             type="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
           />
           <Box sx={{ textAlign: "center" }}>
             <Button
@@ -80,17 +78,19 @@ const Signup = () => {
                 marginTop: "1rem",
                 "&hover": { boxShadow: "none" },
               }}
-              onClick={handleSignup}
+              onClick={handleLogin}
             >
-              Sign Up
+              Login
             </Button>
           </Box>
           <Typography sx={{ textAlign: "center" }}>
-            Already an user? <Link to={"/login"}>Login here</Link>
+            Not an user?
+            <Link to={"/"}>Signup</Link>
           </Typography>
         </Card>
       </Box>
     </>
   );
 };
-export default Signup;
+
+export default Login;

@@ -12,7 +12,7 @@ const Greet = () => {
       }}
     >
       <Typography variant="h2" sx={{ color: "#0F89E6" }}>
-        Welcome Chief
+        Welcome To Linkspace
       </Typography>
     </Box>
   );
