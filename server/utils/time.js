@@ -1,13 +1,18 @@
-const { format } = require("date-fns");
+const setTime = () => {
+  const date = new Date();
+  const hour = date.getHours().toString();
+  let minute = date.getMinutes().toString();
+  if (minute < "10") {
+    minute = `${"0"}${minute}`;
+  }
+  const time = [hour, ":", minute];
 
-const hour = format(new Date(), "HH:mm:ss:a..aa").split(":")[0];
-const time = format(new Date(), "HH:mm:ss").split(":");
-if (hour < 12) {
-  time[1] = ":";
-  time[3] = " AM";
-} else {
-  time[1] = ":";
-  time[3] = " PM";
-}
+  if (hour > "12") {
+    time[3] = " PM";
+  } else {
+    time[3] = " AM";
+  }
+  return time;
+};
 
-module.exports = { time };
+module.exports = { setTime };
