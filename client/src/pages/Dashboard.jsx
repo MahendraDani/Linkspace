@@ -8,6 +8,8 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (token) {
       localStorage.removeItem("token");
+      localStorage.removeItem("userID");
+      localStorage.removeItem("name");
       navigate("/");
     }
   };

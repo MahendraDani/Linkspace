@@ -17,9 +17,13 @@ const Login = () => {
           password: password,
         }
       );
-      const accessToken = response.data.accessToken;
-      localStorage.setItem("token", accessToken);
-      if (accessToken) {
+      const token = response.data.accessToken;
+      const userName = response.data.user.name;
+      const userID = response.data.user.userID;
+      localStorage.setItem("token", token);
+      localStorage.setItem("userID", userID);
+      localStorage.setItem("name", userName);
+      if (token) {
         navigate("/dashboard");
       }
     } catch (error) {
