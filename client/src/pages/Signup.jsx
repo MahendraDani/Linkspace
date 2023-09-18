@@ -21,8 +21,14 @@ const Signup = () => {
           password: password,
         }
       );
+      const token = response.data.accessToken;
+      const userName = response.data.user.name;
+      const userID = response.data.user.userID;
+      localStorage.setItem("token", token);
+      localStorage.setItem("userID", userID);
+      localStorage.setItem("name", userName);
       console.log(response);
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
