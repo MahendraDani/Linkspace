@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -23,8 +24,12 @@ const Navbar = () => {
               gap: "1rem",
             }}
           >
-            <Button variant="outlined">Login</Button>
-            <Button variant="contained">Signup</Button>
+            <Link to={"/login"}>
+              <Button variant="outlined">Login</Button>
+            </Link>
+            <Link to={"/singup"}>
+              <Button variant="contained">Signup</Button>
+            </Link>
           </Box>
         </Container>
       </Box>
