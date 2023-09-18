@@ -27,7 +27,7 @@ const Navbar = () => {
             <Link to={"/login"}>
               <Button variant="outlined">Login</Button>
             </Link>
-            <Link to={"/singup"}>
+            <Link to={"/signup"}>
               <Button variant="contained">Signup</Button>
             </Link>
           </Box>
