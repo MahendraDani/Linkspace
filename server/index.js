@@ -27,6 +27,12 @@ app.use(
   require("./routes/links/create/create.link")
 );
 
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/links/read/getOneById.link")
+);
+
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
 });
