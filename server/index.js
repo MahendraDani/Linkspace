@@ -33,6 +33,12 @@ app.use(
   require("./routes/links/read/getOneById.link")
 );
 
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/links/read/getAllById.link")
+);
+
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
 });
