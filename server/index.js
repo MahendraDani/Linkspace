@@ -53,6 +53,8 @@ app.use(
   require("./routes/links/delete/deleteAllById")
 );
 
+app.use("/api/users", validateUser, require("./routes/tags/create/createTag"));
+
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
 });
