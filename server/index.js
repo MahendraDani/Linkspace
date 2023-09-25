@@ -54,6 +54,11 @@ app.use(
 );
 
 app.use("/api/users", validateUser, require("./routes/tags/create/createTag"));
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/tags/delete/deleteOne.tag")
+);
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
