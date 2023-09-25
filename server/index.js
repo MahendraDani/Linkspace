@@ -45,6 +45,12 @@ app.use(
   require("./routes/links/delete/deleteOneById")
 );
 
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/links/delete/deleteAllById")
+);
+
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
 });
