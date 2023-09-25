@@ -20,7 +20,7 @@ const deleteLinkById = async (req, res) => {
     await Link.findOneAndRemove({ linkID });
     res
       .status(statusCodes.SUCCESS)
-      .json({ message: "Link deleted successfully!" });
+      .json({ message: "Link deleted successfully" });
   } catch (error) {
     console.log(error);
   }
