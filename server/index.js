@@ -21,6 +21,11 @@ app.get("/dashboard", validateUser, (req, res) => {
 app.use("/", require("./routes/index"));
 app.use("/api/auth", require("./routes/auth/signup"));
 app.use("/api/auth", require("./routes/auth/login"));
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/links/create/create.link")
+);
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
