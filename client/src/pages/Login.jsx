@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "linkspace-api.vercel.app/api/auth/login",
+        "https://linkspace-api.vercel.app/api/auth/login",
         {
           email: email,
           password: password,
