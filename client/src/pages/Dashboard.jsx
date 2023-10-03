@@ -14,23 +14,23 @@ const Dashboard = () => {
     }
   };
   return (
-    <Box
-      sx={{
-        display: "grid",
-        placeContent: "center",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <Typography variant="h2" sx={{ color: "#0F89E6" }}>
-        Welcome To Linkspace
-      </Typography>
-      <div>
-        <Button variant="contained" onClick={handleLogout}>
-          Logout
-        </Button>
-      </div>
-    </Box>
+    // <Box
+    //   sx={{
+    //     display: "grid",
+    //     placeContent: "center",
+    //     width: "100%",
+    //     height: "100vh",
+    //   }}
+    // >
+    //   <Typography variant="h2" sx={{ color: "#0F89E6" }}>
+    //     Welcome To Linkspace
+    //   </Typography>
+    //   <div>
+    <Button variant="contained" onClick={handleLogout}>
+      Logout
+    </Button>
+    //   </div>
+    // </Box>
   );
 };
 

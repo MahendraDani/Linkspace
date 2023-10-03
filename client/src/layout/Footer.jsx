@@ -10,7 +10,7 @@ const Footer = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          borderTop: "0.3px solid black",
+          bgcolor: "#eee",
         }}
       >
         <Container>

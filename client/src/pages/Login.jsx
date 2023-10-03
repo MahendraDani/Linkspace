@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://linkspace-api.vercel.app/api/auth/login",
+        "http://localhost:3000/api/auth/login",
         {
           email: email,
           password: password,
@@ -38,7 +38,7 @@ const Login = () => {
           height: "100vh",
           display: "grid",
           placeContent: "center",
-          backgroundColor: "#F9F5FF",
+          backgroundColor: "#eee",
         }}
       >
         <Card
