@@ -8,7 +8,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://linkspace-api.vercel.app/",
+    origin: "https://linkspace-eta.vercel.app",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
   })
 );
 app.use(bodyPraser.json());
