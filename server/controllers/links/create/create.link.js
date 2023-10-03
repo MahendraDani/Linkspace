@@ -8,7 +8,7 @@ const { setTime } = require("../../../utils/time");
 
 const createLink = async (req, res) => {
   try {
-    const userID = req.headers.id;
+    const userID = req.params.id;
     if (!userID) {
       res
         .status(statusCodes.BAD_REQUEST)
