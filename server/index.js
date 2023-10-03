@@ -66,6 +66,8 @@ app.use(
   require("./routes/tags/delete/deleteAll.tag")
 );
 
+app.use("/api/users", validateUser, require("./routes/search/link.search"));
+
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
 });

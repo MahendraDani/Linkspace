@@ -4,7 +4,7 @@ const TagsSchema = new mongoose.Schema({
   tagID: String,
   userID: String,
   purpose: String,
-  tag: String,
+  tagName: String,
   createdBy: String,
   createdOn: String,
   createdAt: Array,

@@ -22,8 +22,8 @@ const createTag = async (req, res) => {
         .json({ message: "Invalid or incorrect user iD" });
       return;
     }
-    const { purpose, userTag } = req.body;
-    if (!purpose || !userTag) {
+    const { purpose, name } = req.body;
+    if (!purpose || !name) {
       res
         .status(statusCodes.BAD_REQUEST)
         .json({ message: "All fields are required" });
@@ -33,7 +33,7 @@ const createTag = async (req, res) => {
       tagID: id,
       userID: user.userID,
       purpose: purpose,
-      tag: userTag,
+      tagName: name.toLowerCase(),
       createdBy: user.name,
       createdOn: date,
       createdAt: setTime(),
