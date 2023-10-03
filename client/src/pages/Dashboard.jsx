@@ -1,6 +1,16 @@
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../layout/Sidebar";
+import Main from "../layout/Main";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -14,23 +24,17 @@ const Dashboard = () => {
     }
   };
   return (
-    // <Box
-    //   sx={{
-    //     display: "grid",
-    //     placeContent: "center",
-    //     width: "100%",
-    //     height: "100vh",
-    //   }}
-    // >
-    //   <Typography variant="h2" sx={{ color: "#0F89E6" }}>
-    //     Welcome To Linkspace
-    //   </Typography>
-    //   <div>
-    <Button variant="contained" onClick={handleLogout}>
-      Logout
-    </Button>
-    //   </div>
-    // </Box>
+    <Box>
+      <Container maxWidth={"lg"}>
+        <Stack
+          direction={"row"}
+          sx={{ justifyContent: "space-between", gap: 4 }}
+        >
+          <Sidebar />
+          <Main />
+        </Stack>
+      </Container>
+    </Box>
   );
 };
 
