@@ -41,7 +41,7 @@ const DashNavbar = () => {
       localStorage.removeItem("token");
       localStorage.removeItem("userID");
       localStorage.removeItem("name");
-      navigate("/");
+      window.location = "/";
     }
   };
 
