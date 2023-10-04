@@ -39,7 +39,7 @@ const signup = async (req, res) => {
         password: user.password,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "3h" }
+      { expiresIn: "3d" }
     );
 
     return res.status(statusCodes.SUCCESS).json({ user, accessToken: token });

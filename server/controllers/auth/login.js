@@ -34,7 +34,7 @@ const login = async (req, res) => {
           },
           process.env.JWT_SECRET,
           {
-            expiresIn: "3h",
+            expiresIn: "3d",
           }
         );
         return res.status(statusCodes.SUCCESS).json({
