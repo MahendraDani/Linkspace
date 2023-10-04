@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { Add } from "@mui/icons-material";
-import MulitInput from "./Form/MulitInput";
+import MulitInput from "../Form/MulitInput";
 import axios from "axios";
 
 const CreateLink = ({ showModal, handleCloseModal }) => {

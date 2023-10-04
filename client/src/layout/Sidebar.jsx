@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
-import CreateLink from "../components/CreateLink";
+import CreateLink from "../components/Links/CreateLink";
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
