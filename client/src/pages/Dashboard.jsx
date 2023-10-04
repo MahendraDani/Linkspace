@@ -11,20 +11,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../layout/Sidebar";
 import Main from "../layout/Main";
+import DashNavbar from "../layout/DashNavbar";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const handleLogout = () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      localStorage.removeItem("token");
-      localStorage.removeItem("userID");
-      localStorage.removeItem("name");
-      navigate("/");
-    }
-  };
+
   return (
     <Box>
+      <DashNavbar />
       <Container maxWidth={"lg"}>
         <Stack
           direction={"row"}
@@ -33,9 +27,6 @@ const Dashboard = () => {
           <Sidebar />
           <Main />
         </Stack>
-        <Button variant="outlined" onClick={handleLogout}>
-          Logout
-        </Button>
       </Container>
     </Box>
   );

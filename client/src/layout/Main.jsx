@@ -2,6 +2,7 @@ import { Box, Link, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import LinkTableItem from "../components/LinkTableItem";
 import LinkTable from "../components/LinkTable";
+import DashNavbar from "./DashNavbar";
 
 const Main = () => {
   return (
