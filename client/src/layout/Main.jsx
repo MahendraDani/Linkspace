@@ -1,10 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import React from "react";
 import LinkTable from "../components/Links/LinkTable";
 
 const Main = () => {
   return (
-    <Box sx={{ border: "2px solid tomato", flex: 8 }}>
+    <Box elevation="false" sx={{ flex: 8, px: 4 }}>
       <LinkTable />
     </Box>
   );

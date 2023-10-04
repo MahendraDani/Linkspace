@@ -6,7 +6,7 @@ import DashNavbar from "../layout/DashNavbar";
 
 const Dashboard = () => {
   return (
-    <Box>
+    <Box sx={{ minHeight: "100vh", bgcolor: "#F0FAF3" }}>
       <DashNavbar />
       <Container maxWidth={"lg"}>
         <Stack

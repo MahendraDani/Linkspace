@@ -1,6 +1,7 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
+import GetTags from "../components/Tags/getTags";
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,6 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        border: "2px solid skyblue",
         display: { xs: "none", md: "block" },
         flex: 2,
         p: 2,
@@ -23,6 +23,7 @@ const Sidebar = () => {
         Create link
       </Button>
       <CreateLink showModal={showModal} handleCloseModal={handleCloseModal} />
+      <GetTags />
     </Box>
   );
 };

@@ -1,9 +1,31 @@
 import React, { useState } from "react";
-import { Box, Button, Link, Paper, Stack, Typography } from "@mui/material";
-import { Edit, Delete, OpenInNew } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Link,
+  Paper,
+  Popover,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { Edit, Delete, OpenInNew, MoreVert } from "@mui/icons-material";
 import axios from "axios";
 
 const LinkTableItem = ({ link }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
   const deleteLink = async (linkID) => {
     try {
       const response = await axios.delete(
@@ -14,7 +36,7 @@ const LinkTableItem = ({ link }) => {
           },
         }
       );
-      console.log(response);
+      window.location = "/dashboard";
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +45,8 @@ const LinkTableItem = ({ link }) => {
     <Stack
       direction={"row"}
       sx={{
-        borderBottom: "1px solid gray",
+        border: "1px solid gray",
+        // borderBottom: "none",
         justifyContent: "space-between",
         alignItems: "center",
         px: 2,
@@ -89,30 +112,35 @@ const LinkTableItem = ({ link }) => {
           </Box>
         </Stack>
       </Box>
+      {/* Only for screens greater than md */}
       <Stack
         direction={"row"}
-        sx={{ alignItems: "center", justifyContent: "space-between", gap: 2 }}
+        sx={{
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 1,
+          display: { xs: "none", md: "flex" },
+        }}
       >
         <Box>
           <Typography variant="body2">{link.createdOn}</Typography>
         </Box>
         <Box>
-          <Edit
-            fontSize="small"
-            sx={{
-              cursor: "pointer",
-              "&:hover": {
-                transform: "scale(1.2)",
-                transition: "all 0.3s ease-in",
-              },
-            }}
-          />
+          <IconButton>
+            <Edit
+              fontSize="small"
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.2)",
+                  transition: "all 0.3s ease-in",
+                },
+              }}
+            />
+          </IconButton>
         </Box>
         <Box>
-          <Link
-            component="button"
-            variant="body2"
-            sx={{ cursor: "pointer", color: "black" }}
+          <IconButton
             onClick={() => {
               deleteLink(link.linkID);
             }}
@@ -126,23 +154,95 @@ const LinkTableItem = ({ link }) => {
                 },
               }}
             />
-          </Link>
+          </IconButton>
         </Box>
         <Box>
-          <a href={link} target="_blank">
-            <OpenInNew
-              fontSize="small"
-              sx={{
-                cursor: "pointer",
-                "&:hover": {
-                  transform: "scale(1.1)",
-                  transition: "all 0.3s ease-in",
-                },
-              }}
-            />
-          </a>
+          <IconButton>
+            <a href={link.link} target="_blank">
+              <OpenInNew
+                fontSize="small"
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    transform: "scale(1.1)",
+                    transition: "all 0.3s ease-in",
+                  },
+                }}
+              />
+            </a>
+          </IconButton>
         </Box>
       </Stack>
+
+      <Box sx={{ display: { xs: "block", md: "none" } }}>
+        <IconButton
+          aria-describedby={id}
+          variant="contained"
+          onClick={handleClick}
+        >
+          <MoreVert />
+        </IconButton>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <Stack>
+            <Box>
+              <IconButton>
+                <Edit
+                  fontSize="small"
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      transform: "scale(1.2)",
+                      transition: "all 0.3s ease-in",
+                    },
+                  }}
+                />
+              </IconButton>
+            </Box>
+            <Box>
+              <IconButton
+                onClick={() => {
+                  deleteLink(link.linkID);
+                }}
+              >
+                <Delete
+                  fontSize="small"
+                  sx={{
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      transition: "all 0.3s ease-in",
+                    },
+                  }}
+                />
+              </IconButton>
+            </Box>
+            <Box>
+              <IconButton>
+                <a href={link.link} target="_blank">
+                  <OpenInNew
+                    fontSize="small"
+                    sx={{
+                      cursor: "pointer",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                        transition: "all 0.3s ease-in",
+                      },
+                    }}
+                  />
+                </a>
+              </IconButton>
+            </Box>
+          </Stack>
+        </Popover>
+      </Box>
     </Stack>
   );
 };

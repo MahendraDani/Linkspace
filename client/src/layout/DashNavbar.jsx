@@ -21,10 +21,12 @@ const DashNavbar = () => {
   return (
     <Box
       sx={{
-        width: "100vw",
+        width: "100%",
         p: 2,
         px: { md: 10 },
-        borderBottom: "2px solid gray",
+        borderBottom: "2px solid #C1EBCD",
+        bgcolor: "#D1F0DA",
+        mb: 4,
       }}
     >
       <Stack
@@ -36,7 +38,7 @@ const DashNavbar = () => {
             Linkspace
           </Typography>
         </Box>
-        <Stack
+        {/* <Stack
           direction={"row"}
           sx={{
             alignItems: "center",
@@ -52,7 +54,7 @@ const DashNavbar = () => {
           <IconButton>
             <Search />
           </IconButton>
-        </Stack>
+        </Stack> */}
         <Box>
           <Button variant="outlined" onClick={handleLogout}>
             Logout

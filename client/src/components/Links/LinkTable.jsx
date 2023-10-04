@@ -29,8 +29,10 @@ const LinkTable = () => {
     getLinksOfUser();
   }, []);
   return (
-    <Paper square elevation={2}>
-      <Typography variant="h6">My Links</Typography>
+    <Stack gap={2}>
+      <Typography variant="h5" fontWeight={600}>
+        My Links
+      </Typography>
       <Stack>
         {links.map((link, index) => {
           return (
@@ -40,7 +42,7 @@ const LinkTable = () => {
           );
         })}
       </Stack>
-    </Paper>
+    </Stack>
   );
 };
 

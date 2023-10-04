@@ -34,8 +34,8 @@ const CreateLink = ({ showModal, handleCloseModal }) => {
           },
         }
       );
-      console.log(response);
       handleCloseModal();
+      window.location = "/dashboard";
     } catch (error) {
       console.log(error);
     }
