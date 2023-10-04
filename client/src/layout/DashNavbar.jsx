@@ -124,41 +124,7 @@ const DashNavbar = () => {
           direction={"row"}
           sx={{ justifyContent: "space-between", alignItems: "center", gap: 2 }}
         >
-          <Box>
-            <Button
-              onClick={handleMenuClick}
-              variant="contained"
-              disableElevation
-              sx={{
-                border: "2px solid #121216",
-                bgcolor: "transparent",
-                color: "#121216",
-                ":hover": {
-                  bgcolor: "#04030F",
-                  color: "white",
-                },
-              }}
-              startIcon={<Add />}
-              endIcon={<ExpandMore />}
-            />
-            <Menu
-              anchorEl={anchorEl2}
-              open={openMenu}
-              onClose={handleMenuClose}
-            >
-              <Button
-                variant="standard"
-                startIcon={<AddLink />}
-                onClick={handleOpenModal}
-              >
-                New Link
-              </Button>
-              <CreateLink
-                showModal={showModal}
-                handleCloseModal={handleCloseModal}
-              />
-            </Menu>
-          </Box>
+          <Box></Box>
           <Box>
             <IconButton onClick={handleClick}>
               <Avatar {...stringAvatar(localStorage.getItem("name"))} />
@@ -173,6 +139,17 @@ const DashNavbar = () => {
               }}
             >
               <Stack>
+                <Button
+                  variant="standard"
+                  startIcon={<AddLink />}
+                  onClick={handleOpenModal}
+                >
+                  New Link
+                </Button>
+                <CreateLink
+                  showModal={showModal}
+                  handleCloseModal={handleCloseModal}
+                />
                 <Button
                   startIcon={<Logout />}
                   onClick={handleLogout}
