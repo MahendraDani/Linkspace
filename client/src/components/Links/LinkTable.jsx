@@ -9,7 +9,9 @@ const LinkTable = () => {
   const getLinksOfUser = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/users/links/all/a91cfa96-3db3-4b33-938d-a74a0d5e3257",
+        `http://localhost:3000/api/users/links/all/${localStorage.getItem(
+          "userID"
+        )}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

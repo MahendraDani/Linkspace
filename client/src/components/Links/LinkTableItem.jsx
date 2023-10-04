@@ -60,7 +60,7 @@ const LinkTableItem = ({ link }) => {
                 sx={{
                   justifyContent: "start",
                   alignItems: "center",
-                  gap: 2,
+                  gap: 1,
                 }}
               >
                 {link.tags.map((tag, index) => {
