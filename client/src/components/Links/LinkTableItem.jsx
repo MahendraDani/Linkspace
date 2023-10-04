@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import {
+  Alert,
   Box,
   Button,
   IconButton,
   Link,
+  Modal,
   Paper,
   Popover,
   Stack,
@@ -41,6 +43,9 @@ const LinkTableItem = ({ link }) => {
       console.log(error);
     }
   };
+  const [openWarning, setOpenWarning] = useState(false);
+  const handleOpenWarning = () => setOpenWarning(true);
+  const handleCloseWarning = () => setOpenWarning(false);
   return (
     <Stack
       direction={"row"}
@@ -158,21 +163,68 @@ const LinkTableItem = ({ link }) => {
           </IconButton>
         </Box>
         <Box>
-          <IconButton>
-            <a href={link.link} target="_blank">
-              <OpenInNew
-                fontSize="small"
-                sx={{
-                  cursor: "pointer",
-                  "&:hover": {
-                    transform: "scale(1.1)",
-                    transition: "all 0.3s ease-in",
-                  },
-                }}
-              />
-            </a>
+          <IconButton onClick={handleOpenWarning}>
+            <OpenInNew
+              fontSize="small"
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.1)",
+                  transition: "all 0.3s ease-in",
+                },
+              }}
+            />
           </IconButton>
         </Box>
+        <Modal open={openWarning} onClose={handleCloseWarning}>
+          <Box
+            sx={{
+              position: "absolute",
+              borderRadius: 0.5,
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: 400,
+              bgcolor: "#E0F5E6",
+              boxShadow: 16,
+              p: 4,
+            }}
+          >
+            <Stack
+              sx={{
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 2,
+              }}
+            >
+              <Box>
+                <Alert severity="info">You are being redirected to</Alert>
+              </Box>
+              <Box>
+                <Typography>{link.link}</Typography>
+              </Box>
+              <Stack direction={"row"} gap={2}>
+                <Button
+                  variant="outlined"
+                  color="info"
+                  onClick={handleCloseWarning}
+                >
+                  Go Back
+                </Button>
+                <Link href={link.link} target="_blank">
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    color="success"
+                    endIcon={<OpenInNew />}
+                  >
+                    Visit Site
+                  </Button>
+                </Link>
+              </Stack>
+            </Stack>
+          </Box>
+        </Modal>
       </Stack>
 
       <Box sx={{ display: { xs: "block", md: "none" } }}>
@@ -193,7 +245,7 @@ const LinkTableItem = ({ link }) => {
             horizontal: "left",
           }}
         >
-          <Stack>
+          <Stack sx={{ p: 1 }}>
             <Box>
               <IconButton>
                 <Edit
@@ -226,21 +278,68 @@ const LinkTableItem = ({ link }) => {
               </IconButton>
             </Box>
             <Box>
-              <IconButton>
-                <a href={link.link} target="_blank">
-                  <OpenInNew
-                    fontSize="small"
-                    sx={{
-                      cursor: "pointer",
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                        transition: "all 0.3s ease-in",
-                      },
-                    }}
-                  />
-                </a>
+              <IconButton onClick={handleOpenWarning}>
+                <OpenInNew
+                  fontSize="small"
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      transition: "all 0.3s ease-in",
+                    },
+                  }}
+                ></OpenInNew>
               </IconButton>
             </Box>
+            <Modal open={openWarning} onClose={handleCloseWarning}>
+              <Box
+                sx={{
+                  position: "absolute",
+                  borderRadius: 0.5,
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 400,
+                  bgcolor: "#E0F5E6",
+                  boxShadow: 16,
+                  p: 4,
+                }}
+              >
+                <Stack
+                  sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 2,
+                  }}
+                >
+                  <Box>
+                    <Alert severity="info">You are being redirected to</Alert>
+                  </Box>
+                  <Box>
+                    <Typography>{link.link}</Typography>
+                  </Box>
+                  <Stack direction={"row"} gap={2}>
+                    <Button
+                      variant="outlined"
+                      color="info"
+                      onClick={handleCloseWarning}
+                    >
+                      Go Back
+                    </Button>
+                    <Link href={link.link} target="_blank">
+                      <Button
+                        variant="contained"
+                        disableElevation
+                        color="success"
+                        endIcon={<OpenInNew />}
+                      >
+                        Visit Site
+                      </Button>
+                    </Link>
+                  </Stack>
+                </Stack>
+              </Box>
+            </Modal>
           </Stack>
         </Popover>
       </Box>
