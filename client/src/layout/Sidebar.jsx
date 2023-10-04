@@ -1,7 +1,15 @@
-import { Box } from "@mui/material";
-import React from "react";
+import { Box, Button } from "@mui/material";
+import React, { useState } from "react";
+import CreateLink from "../components/CreateLink";
 
 const Sidebar = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
     <Box
       sx={{
@@ -11,7 +19,10 @@ const Sidebar = () => {
         p: 2,
       }}
     >
-      Sidebar
+      <Button variant="outlined" onClick={handleOpenModal}>
+        Create link
+      </Button>
+      <CreateLink showModal={showModal} handleCloseModal={handleCloseModal} />
     </Box>
   );
 };

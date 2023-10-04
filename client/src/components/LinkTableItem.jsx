@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Link, Paper, Stack, Typography } from "@mui/material";
 import { Edit, Delete, OpenInNew } from "@mui/icons-material";
 
-const LinkTableItem = () => {
+const LinkTableItem = ({ title, link }) => {
   return (
     <Stack
       direction={"row"}
@@ -18,13 +18,11 @@ const LinkTableItem = () => {
         <Stack direction={"column"} sx={{ py: 1 }}>
           <Box>
             <Typography variant="subtitle1" sx={{ fontWeight: "500" }}>
-              My Github Account
+              {title}
             </Typography>
           </Box>
           <Box>
-            <Typography variant="body2">
-              https://github.com/MahendraDani
-            </Typography>
+            <Typography variant="body2">{link} </Typography>
           </Box>
         </Stack>
       </Box>
@@ -54,16 +52,18 @@ const LinkTableItem = () => {
           />
         </Box>
         <Box>
-          <OpenInNew
-            fontSize="small"
-            sx={{
-              cursor: "pointer",
-              "&:hover": {
-                transform: "scale(1.1)",
-                transition: "all 0.3s ease-in",
-              },
-            }}
-          />
+          <a href={link} target="_blank">
+            <OpenInNew
+              fontSize="small"
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  transform: "scale(1.1)",
+                  transition: "all 0.3s ease-in",
+                },
+              }}
+            />
+          </a>
         </Box>
       </Stack>
     </Stack>

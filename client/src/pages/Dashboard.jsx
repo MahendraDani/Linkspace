@@ -33,6 +33,9 @@ const Dashboard = () => {
           <Sidebar />
           <Main />
         </Stack>
+        <Button variant="outlined" onClick={handleLogout}>
+          Logout
+        </Button>
       </Container>
     </Box>
   );
