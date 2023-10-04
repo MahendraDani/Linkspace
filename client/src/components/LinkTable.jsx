@@ -1,10 +1,11 @@
-import { Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import LinkTableItem from "./LinkTableItem";
 import axios from "axios";
 
 const LinkTable = () => {
   const [links, setLinks] = useState([]);
+
   const getLinksOfUser = async () => {
     try {
       const response = await axios.get(
@@ -16,11 +17,12 @@ const LinkTable = () => {
         }
       );
       const userLinks = response.data;
-      setLinks(userLinks);
+      setLinks(userLinks.reverse());
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getLinksOfUser();
   }, []);
@@ -30,7 +32,9 @@ const LinkTable = () => {
       <Stack>
         {links.map((link, index) => {
           return (
-            <LinkTableItem key={index} title={link.title} link={link.link} />
+            <Box key={index}>
+              <LinkTableItem link={link} />
+            </Box>
           );
         })}
       </Stack>
