@@ -57,7 +57,7 @@ const CreateLink = ({ showModal, handleCloseModal }) => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: 400,
-              bgcolor: "background.paper",
+              bgcolor: "#E0F5E6",
               boxShadow: 16,
               p: 4,
             }}

@@ -1,9 +1,11 @@
-import { Logout, Search } from "@mui/icons-material";
+import { Add, AddLink, ExpandMore, Logout, Search } from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Button,
   IconButton,
+  Menu,
+  MenuItem,
   Paper,
   Popover,
   Stack,
@@ -11,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import CreateLink from "../components/Links/CreateLink";
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -63,11 +66,28 @@ const DashNavbar = () => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
+  //Menu
+  const [anchorEl2, setAnchorEl2] = useState(null);
+  const openMenu = Boolean(anchorEl2);
+  const handleMenuClick = (event) => {
+    setAnchorEl2(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl2(null);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
   return (
     <Box
       sx={{
         width: "100%",
-        p: 2,
+        p: 1,
         px: { md: 10 },
         borderBottom: "2px solid #C1EBCD",
         bgcolor: "#D1F0DA",
@@ -100,31 +120,70 @@ const DashNavbar = () => {
             <Search />
           </IconButton>
         </Stack> */}
-        <Box>
-          <IconButton onClick={handleClick}>
-            <Avatar {...stringAvatar(localStorage.getItem("name"))} />
-          </IconButton>
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-          >
-            <Stack>
+        <Stack
+          direction={"row"}
+          sx={{ justifyContent: "space-between", alignItems: "center", gap: 2 }}
+        >
+          <Box>
+            <Button
+              onClick={handleMenuClick}
+              variant="contained"
+              disableElevation
+              sx={{
+                border: "2px solid #121216",
+                bgcolor: "transparent",
+                color: "#121216",
+                ":hover": {
+                  bgcolor: "#04030F",
+                  color: "white",
+                },
+              }}
+              startIcon={<Add />}
+              endIcon={<ExpandMore />}
+            />
+            <Menu
+              anchorEl={anchorEl2}
+              open={openMenu}
+              onClose={handleMenuClose}
+            >
               <Button
-                startIcon={<Logout />}
-                onClick={handleLogout}
                 variant="standard"
+                startIcon={<AddLink />}
+                onClick={handleOpenModal}
               >
-                Logout
+                New Link
               </Button>
-            </Stack>
-          </Popover>
-        </Box>
+              <CreateLink
+                showModal={showModal}
+                handleCloseModal={handleCloseModal}
+              />
+            </Menu>
+          </Box>
+          <Box>
+            <IconButton onClick={handleClick}>
+              <Avatar {...stringAvatar(localStorage.getItem("name"))} />
+            </IconButton>
+            <Popover
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <Stack>
+                <Button
+                  startIcon={<Logout />}
+                  onClick={handleLogout}
+                  variant="standard"
+                >
+                  Logout
+                </Button>
+              </Stack>
+            </Popover>
+          </Box>
+        </Stack>
       </Stack>
     </Box>
   );
