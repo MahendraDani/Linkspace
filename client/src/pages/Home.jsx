@@ -97,6 +97,7 @@ const Home = () => {
           </Link>
         </Stack>
       </Box>
+      <Footer />
     </Box>
   );
 };

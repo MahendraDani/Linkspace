@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
+import Footer from "../layout/Footer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -108,6 +109,7 @@ const Login = () => {
           </Box>
         </Paper>
       </Stack>
+      <Footer />
     </>
   );
 };
