@@ -127,16 +127,6 @@ const Sidebar = ({
             </Box>
           </Stack>
         </Stack>
-
-        {/* <GetTags />
-
-      <Button variant="outlined" onClick={handleOpenTagModal}>
-        Create Tag
-      </Button>
-      <CreateTag
-        showModal={showTagModal}
-        handleCloseModal={handleCloseTagModal}
-      /> */}
       </Box>
     </Box>
   );
