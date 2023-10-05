@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     // #F0FAF3
-    <Box sx={{ bgcolor: "#F0FAF3", minHeight: "100vh" }}>
+    <Box sx={{ bgcolor: "#E0F5E6", minHeight: "100vh" }}>
       <Navbar />
       <Box
         sx={{

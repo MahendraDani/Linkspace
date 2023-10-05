@@ -1,9 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Box, Button, Card, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Navbar from "../layout/Navbar";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -35,68 +44,119 @@ const Signup = () => {
   };
   return (
     <>
-      <Box
+      <Navbar />
+      <Stack
         sx={{
           width: "100%",
-          height: "100vh",
-          display: "grid",
-          placeContent: "center",
-          backgroundColor: "#eee",
+          height: "89.3vh",
+          justifyContent: "center",
+          alignItems: "center",
+          bgcolor: "#E0F5E6",
         }}
       >
-        <Card
-          variant="outlined"
-          sx={{
-            padding: "3rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            border: "none",
-            boxShadow: "5px",
-            minWidth: "17rem",
-          }}
+        <Paper
+          sx={{ p: 3, bgcolor: "#9CE7B8", minWidth: "25rem" }}
+          square
+          elevation={1}
         >
-          <Typography
-            variant="h4"
-            sx={{ textAlign: "center", fontWeight: "600", color: "#0F89E6" }}
+          <Stack
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 2,
+            }}
           >
-            SIGN UP
-          </Typography>
-          <TextField
-            label="Name"
-            variant="standard"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <TextField
-            label="Email"
-            variant="standard"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            label="Password"
-            variant="standard"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Box sx={{ textAlign: "center" }}>
+            <Box sx={{ mb: 2 }}>
+              <Typography variant="h5">Create Account</Typography>
+            </Box>
+            <TextField
+              sx={{ width: "100%" }}
+              label="Name"
+              variant="outlined"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <TextField
+              sx={{ width: "100%" }}
+              label="Email"
+              variant="outlined"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextField
+              sx={{ width: "100%" }}
+              label="Password"
+              type="password"
+              variant="outlined"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Stack>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Button
               variant="contained"
+              disableElevation
               sx={{
-                boxShadow: "none",
-                marginTop: "1rem",
-                "&hover": { boxShadow: "none" },
+                border: "1px solid #433C53",
+                bgcolor: "transparent",
+                color: "#433C53",
+                marginTop: 4,
+                ":hover": {
+                  bgcolor: "#393347",
+                  color: "white",
+                },
               }}
               onClick={handleSignup}
             >
               Sign Up
             </Button>
           </Box>
-          <Typography sx={{ textAlign: "center" }}>
-            Already an user? <Link to={"/login"}>Login here</Link>
-          </Typography>
-        </Card>
-      </Box>
+        </Paper>
+      </Stack>
     </>
   );
 };
 export default Signup;
+
+// <Typography
+//             variant="h4"
+//             sx={{ textAlign: "center", fontWeight: "600", color: "#0F89E6" }}
+//           >
+//             SIGN UP
+//           </Typography>
+//           <TextField
+//             label="Name"
+//             variant="standard"
+//             onChange={(e) => setName(e.target.value)}
+//           />
+//           <TextField
+//             label="Email"
+//             variant="standard"
+//             onChange={(e) => setEmail(e.target.value)}
+//           />
+//           <TextField
+//             label="Password"
+//             variant="standard"
+//             type="password"
+//             onChange={(e) => setPassword(e.target.value)}
+//           />
+//           <Box sx={{ textAlign: "center" }}>
+//             <Button
+//               variant="contained"
+//               sx={{
+//                 boxShadow: "none",
+//                 marginTop: "1rem",
+//                 "&hover": { boxShadow: "none" },
+//               }}
+//               onClick={handleSignup}
+//             >
+//               Sign Up
+//             </Button>
+//           </Box>
+//           <Typography sx={{ textAlign: "center" }}>
+//             Already an user? <Link to={"/login"}>Login here</Link>
+//           </Typography>
