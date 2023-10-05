@@ -51,9 +51,10 @@ const Sidebar = ({
     textTransform: "none",
     minWidth: { lg: "12rem", md: "10rem" },
     textAlign: "center",
-    bgcolor: "#D1F0DA",
+    border: "2px solid #D1F0DA",
     ":hover": {
       bgcolor: "#A1E3B5",
+      border: "2px solid #A1E3B5",
     },
   };
   return (
@@ -105,6 +106,8 @@ const Sidebar = ({
                 handleCloseModal={handleCloseTagModal}
               />
             </Box>
+          </Stack>
+          <Stack gap={0.5}>
             <Box>
               <Button
                 variant="standard"

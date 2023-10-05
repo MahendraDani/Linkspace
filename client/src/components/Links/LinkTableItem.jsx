@@ -100,7 +100,7 @@ const LinkTableItem = ({ link }) => {
                         sx={{
                           bgcolor: "#AFF5FE",
                           py: 0.3,
-                          px: 1.1,
+                          px: 0.9,
                           borderRadius: "20px",
                           fontSize: 12,
                         }}

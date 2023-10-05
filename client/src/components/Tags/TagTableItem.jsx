@@ -8,6 +8,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import React from "react";
 
 const TagTableItem = ({ tag }) => {
@@ -20,9 +21,25 @@ const TagTableItem = ({ tag }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+
+  const deleteTag = async (tagID) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/users/tags/delete/${tagID}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+
+      window.location = "/dashboard";
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Stack
       direction={"row"}
@@ -98,9 +115,9 @@ const TagTableItem = ({ tag }) => {
         </Box>
         <Box>
           <IconButton
-          // onClick={() => {
-          //   deleteLink(link.linkID);
-          // }}
+            onClick={() => {
+              deleteTag(tag.tagID);
+            }}
           >
             <Delete
               fontSize="small"
@@ -150,7 +167,7 @@ const TagTableItem = ({ tag }) => {
             <Box>
               <IconButton
                 onClick={() => {
-                  deleteLink(link.linkID);
+                  deleteTag(tag.tagID);
                 }}
               >
                 <Delete
