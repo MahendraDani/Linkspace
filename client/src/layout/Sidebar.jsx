@@ -1,9 +1,10 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
 import GetTags from "../components/Tags/getTags";
 import CreateTag from "../components/Tags/CreateTag";
 import axios from "axios";
+import { AddLink } from "@mui/icons-material";
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -48,21 +49,33 @@ const Sidebar = () => {
         p: 2,
       }}
     >
-      <Button
-        variant="outlined"
-        onClick={() => {
-          getTagsOfUsers();
-          handleOpenModal();
-        }}
-      >
-        Create link
-      </Button>
-      <CreateLink
-        showModal={showModal}
-        handleCloseModal={handleCloseModal}
-        userTags={tags}
-      />
-      <GetTags />
+      <Box sx={{ position: "absolute" }}>
+        <Stack gap={2}>
+          <Box>
+            <Typography variant="h5" fontWeight={600}>
+              Dashboard
+            </Typography>
+          </Box>
+          <Box>
+            <Button
+              startIcon={<AddLink />}
+              variant="outlined"
+              onClick={() => {
+                getTagsOfUsers();
+                handleOpenModal();
+              }}
+            >
+              Create link
+            </Button>
+            <CreateLink
+              showModal={showModal}
+              handleCloseModal={handleCloseModal}
+              userTags={tags}
+            />
+          </Box>
+        </Stack>
+
+        {/* <GetTags />
 
       <Button variant="outlined" onClick={handleOpenTagModal}>
         Create Tag
@@ -70,7 +83,8 @@ const Sidebar = () => {
       <CreateTag
         showModal={showTagModal}
         handleCloseModal={handleCloseTagModal}
-      />
+      /> */}
+      </Box>
     </Box>
   );
 };

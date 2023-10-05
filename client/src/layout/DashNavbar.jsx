@@ -109,19 +109,21 @@ const DashNavbar = () => {
         px: { md: 10 },
         borderBottom: "2px solid #C1EBCD",
         bgcolor: "#D1F0DA",
+        top: 0,
         mb: 4,
       }}
     >
-      <Stack
-        direction={"row"}
-        sx={{ justifyContent: "space-between", alignItems: "center" }}
-      >
-        <Box>
-          <Typography variant="h5" fontWeight={600}>
-            Linkspace
-          </Typography>
-        </Box>
-        {/* <Stack
+      <Box>
+        <Stack
+          direction={"row"}
+          sx={{ justifyContent: "space-between", alignItems: "center" }}
+        >
+          <Box>
+            <Typography variant="h5" fontWeight={600}>
+              Linkspace
+            </Typography>
+          </Box>
+          {/* <Stack
           direction={"row"}
           sx={{
             alignItems: "center",
@@ -138,60 +140,65 @@ const DashNavbar = () => {
             <Search />
           </IconButton>
         </Stack> */}
-        <Stack
-          direction={"row"}
-          sx={{ justifyContent: "space-between", alignItems: "center", gap: 2 }}
-        >
-          <Box></Box>
-          <Box>
-            <IconButton onClick={handleClick}>
-              <Avatar {...stringAvatar(localStorage.getItem("name"))} />
-            </IconButton>
-            <Popover
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-            >
-              <Stack p={2}>
-                <Button
-                  variant="standard"
-                  startIcon={<AddLink />}
-                  onClick={handleOpenModal}
-                >
-                  New Link
-                </Button>
+          <Stack
+            direction={"row"}
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
+            <Box></Box>
+            <Box>
+              <IconButton onClick={handleClick}>
+                <Avatar {...stringAvatar(localStorage.getItem("name"))} />
+              </IconButton>
+              <Popover
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+              >
+                <Stack p={2}>
+                  <Button
+                    variant="standard"
+                    startIcon={<AddLink />}
+                    onClick={handleOpenModal}
+                  >
+                    New Link
+                  </Button>
 
-                <CreateLink
-                  showModal={showModal}
-                  handleCloseModal={handleCloseModal}
-                />
-                <Button
-                  variant="standard"
-                  startIcon={<BookmarkAddOutlined />}
-                  onClick={handleOpenCreateTagModal}
-                >
-                  New Tag
-                </Button>
-                <CreateTag
-                  showModal={showCreateTagModal}
-                  handleCloseModal={handleCloseCreateTagModal}
-                />
-                <Button
-                  startIcon={<Logout />}
-                  onClick={handleLogout}
-                  variant="standard"
-                >
-                  Logout
-                </Button>
-              </Stack>
-            </Popover>
-          </Box>
+                  <CreateLink
+                    showModal={showModal}
+                    handleCloseModal={handleCloseModal}
+                  />
+                  <Button
+                    variant="standard"
+                    startIcon={<BookmarkAddOutlined />}
+                    onClick={handleOpenCreateTagModal}
+                  >
+                    New Tag
+                  </Button>
+                  <CreateTag
+                    showModal={showCreateTagModal}
+                    handleCloseModal={handleCloseCreateTagModal}
+                  />
+                  <Button
+                    startIcon={<Logout />}
+                    onClick={handleLogout}
+                    variant="standard"
+                  >
+                    Logout
+                  </Button>
+                </Stack>
+              </Popover>
+            </Box>
+          </Stack>
         </Stack>
-      </Stack>
+      </Box>
     </Box>
   );
 };

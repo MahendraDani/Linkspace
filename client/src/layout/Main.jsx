@@ -4,7 +4,7 @@ import LinkTable from "../components/Links/LinkTable";
 
 const Main = () => {
   return (
-    <Box elevation="false" sx={{ flex: 8, px: 4 }}>
+    <Box elevation="false" sx={{ flex: 8, p: 2 }}>
       <LinkTable />
     </Box>
   );
