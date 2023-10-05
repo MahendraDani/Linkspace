@@ -7,12 +7,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Add } from "@mui/icons-material";
 import MulitInput from "../Form/MulitInput";
 import axios from "axios";
 
-const CreateLink = ({ showModal, handleCloseModal }) => {
+const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [inputTags, setInputTagss] = useState([]);
@@ -40,12 +40,14 @@ const CreateLink = ({ showModal, handleCloseModal }) => {
       console.log(error);
     }
   };
+
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
     setInputTagss(typeof value === "string" ? value.split(",") : value);
   };
+
   return (
     <Box>
       <Modal open={showModal} onClose={handleCloseModal}>
@@ -89,7 +91,7 @@ const CreateLink = ({ showModal, handleCloseModal }) => {
                 <MulitInput
                   handleChange={handleChange}
                   inputTags={inputTags}
-                  setInputTagss={setInputTagss}
+                  userTags={userTags}
                 />
               </Box>
               <Box sx={{ textAlign: "center" }}>

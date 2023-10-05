@@ -1,8 +1,9 @@
 import { Box, Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
 import GetTags from "../components/Tags/getTags";
 import CreateTag from "../components/Tags/CreateTag";
+import axios from "axios";
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,6 +21,25 @@ const Sidebar = () => {
   const handleCloseTagModal = () => {
     setShowTagModal(false);
   };
+
+  const [tags, setTags] = useState([]);
+  const getTagsOfUsers = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
+          "userID"
+        )}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      setTags(response.data.tags);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Box
       sx={{
@@ -28,10 +48,20 @@ const Sidebar = () => {
         p: 2,
       }}
     >
-      <Button variant="outlined" onClick={handleOpenModal}>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          getTagsOfUsers();
+          handleOpenModal();
+        }}
+      >
         Create link
       </Button>
-      <CreateLink showModal={showModal} handleCloseModal={handleCloseModal} />
+      <CreateLink
+        showModal={showModal}
+        handleCloseModal={handleCloseModal}
+        userTags={tags}
+      />
       <GetTags />
 
       <Button variant="outlined" onClick={handleOpenTagModal}>

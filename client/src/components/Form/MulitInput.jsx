@@ -7,7 +7,7 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,9 +19,11 @@ const MenuProps = {
     },
   },
 };
-const myTags = ["mathematics", "career", "fun", "academics"];
 
-const MulitInput = ({ handleChange, inputTags, setInputTags }) => {
+const MulitInput = ({ handleChange, inputTags, userTags }) => {
+  const userTagNames = userTags.map((tag) => {
+    return tag.tagName;
+  });
   return (
     <div>
       <FormControl sx={{ width: "100%" }}>
@@ -42,7 +44,7 @@ const MulitInput = ({ handleChange, inputTags, setInputTags }) => {
           )}
           MenuProps={MenuProps}
         >
-          {myTags.map((name) => (
+          {userTagNames.map((name) => (
             <MenuItem key={name} value={name}>
               {name}
             </MenuItem>
