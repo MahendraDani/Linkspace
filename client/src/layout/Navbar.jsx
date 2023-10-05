@@ -15,7 +15,9 @@ const Navbar = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h4">LinkSpace</Typography>
+          <Link to={"/"}>
+            <Typography variant="h4">LinkSpace</Typography>
+          </Link>
           <Box
             sx={{
               display: "flex",
@@ -25,7 +27,21 @@ const Navbar = () => {
             }}
           >
             <Link to={"/login"}>
-              <Button variant="standard">Login</Button>
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{
+                  border: "2px solid #0D090A",
+                  bgcolor: "transparent",
+                  color: "black",
+                  ":hover": {
+                    bgcolor: "#0D090A",
+                    color: "white",
+                  },
+                }}
+              >
+                Login
+              </Button>
             </Link>
             <Link to={"/signup"}>
               <Button
