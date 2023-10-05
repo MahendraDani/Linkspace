@@ -1,7 +1,6 @@
 import { Box, Button, Stack, Typography, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
-import GetTags from "../components/Tags/getTags";
 import CreateTag from "../components/Tags/CreateTag";
 import axios from "axios";
 import { AddLink, BookmarkAddOutlined } from "@mui/icons-material";
