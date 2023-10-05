@@ -102,13 +102,13 @@ const DashNavbar = () => {
     setShowCreateTagModal(true);
   };
   return (
+    // #43C76A
     <Box
       sx={{
         width: "100%",
         p: 1,
         px: { md: 10 },
-        borderBottom: "2px solid #C1EBCD",
-        bgcolor: "#D1F0DA",
+        bgcolor: "#81D99C",
         top: 0,
         mb: 4,
       }}

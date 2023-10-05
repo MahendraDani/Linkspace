@@ -98,9 +98,9 @@ const LinkTableItem = ({ link }) => {
                       <Typography
                         variant="body2"
                         sx={{
-                          bgcolor: "#E8D6CB",
+                          bgcolor: "#AFF5FE",
                           py: 0.3,
-                          px: 0.9,
+                          px: 1.1,
                           borderRadius: "20px",
                           fontSize: 12,
                         }}
