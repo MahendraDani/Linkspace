@@ -109,7 +109,6 @@ const DashNavbar = () => {
         p: 1,
         px: { md: 10 },
         bgcolor: "#81D99C",
-        top: 0,
         mb: 4,
       }}
     >

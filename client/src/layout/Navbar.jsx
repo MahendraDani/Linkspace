@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <Box sx={{ backgroundColor: "#eee" }}>
+      <Box sx={{ bgcolor: "#81D99C", p: 1 }}>
         <Container
           sx={{
             height: "4rem",
@@ -25,10 +25,24 @@ const Navbar = () => {
             }}
           >
             <Link to={"/login"}>
-              <Button variant="outlined">Login</Button>
+              <Button variant="standard">Login</Button>
             </Link>
             <Link to={"/signup"}>
-              <Button variant="contained">Signup</Button>
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{
+                  border: "2px solid #0D090A",
+                  bgcolor: "transparent",
+                  color: "black",
+                  ":hover": {
+                    bgcolor: "#0D090A",
+                    color: "white",
+                  },
+                }}
+              >
+                Signup
+              </Button>
             </Link>
           </Box>
         </Container>
