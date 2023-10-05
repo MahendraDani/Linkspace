@@ -1,4 +1,12 @@
-import { Add, AddLink, ExpandMore, Logout, Search } from "@mui/icons-material";
+import {
+  Add,
+  AddLink,
+  BookmarkAdd,
+  BookmarkAddOutlined,
+  ExpandMore,
+  Logout,
+  Search,
+} from "@mui/icons-material";
 import {
   Avatar,
   Box,
@@ -14,6 +22,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
+import CreateTag from "../components/Tags/CreateTag";
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -83,6 +92,15 @@ const DashNavbar = () => {
   const handleOpenModal = () => {
     setShowModal(true);
   };
+
+  const [showCreateTagModal, setShowCreateTagModal] = useState(false);
+  const handleCloseCreateTagModal = () => {
+    setShowCreateTagModal(false);
+  };
+
+  const handleOpenCreateTagModal = () => {
+    setShowCreateTagModal(true);
+  };
   return (
     <Box
       sx={{
@@ -138,7 +156,7 @@ const DashNavbar = () => {
                 horizontal: "left",
               }}
             >
-              <Stack>
+              <Stack p={2}>
                 <Button
                   variant="standard"
                   startIcon={<AddLink />}
@@ -146,9 +164,21 @@ const DashNavbar = () => {
                 >
                   New Link
                 </Button>
+
                 <CreateLink
                   showModal={showModal}
                   handleCloseModal={handleCloseModal}
+                />
+                <Button
+                  variant="standard"
+                  startIcon={<BookmarkAddOutlined />}
+                  onClick={handleOpenCreateTagModal}
+                >
+                  New Tag
+                </Button>
+                <CreateTag
+                  showModal={showCreateTagModal}
+                  handleCloseModal={handleCloseCreateTagModal}
                 />
                 <Button
                   startIcon={<Logout />}
