@@ -161,11 +161,12 @@ const DashNavbar = () => {
                   horizontal: "left",
                 }}
               >
-                <Stack p={2}>
+                <Stack p={2} sx={{ bgcolor: "primary.main" }}>
                   <Button
                     variant="standard"
                     startIcon={<AddLink />}
                     onClick={handleOpenModal}
+                    sx={{ ":hover": { bgcolor: "secondary.main" } }}
                   >
                     New Link
                   </Button>
@@ -178,6 +179,7 @@ const DashNavbar = () => {
                     variant="standard"
                     startIcon={<BookmarkAddOutlined />}
                     onClick={handleOpenCreateTagModal}
+                    sx={{ ":hover": { bgcolor: "secondary.main" } }}
                   >
                     New Tag
                   </Button>
@@ -189,6 +191,7 @@ const DashNavbar = () => {
                     startIcon={<Logout />}
                     onClick={handleLogout}
                     variant="standard"
+                    sx={{ ":hover": { bgcolor: "secondary.main" } }}
                   >
                     Logout
                   </Button>

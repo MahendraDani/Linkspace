@@ -25,7 +25,7 @@ const Dashboard = () => {
     setShowTagTable(false);
   };
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#F0FAF3" }}>
+    <Box sx={{ minHeight: "100vh", bgcolor: "greenBackground.main" }}>
       <DashNavbar />
       <Container maxWidth={"lg"}>
         <Stack

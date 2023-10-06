@@ -11,5 +11,8 @@ export const theme = createTheme({
     gray: {
       main: "#5C5C5C",
     },
+    greenBackground: {
+      main: "#F0FAF3",
+    },
   },
 });
