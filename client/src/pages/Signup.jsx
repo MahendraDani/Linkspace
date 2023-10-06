@@ -52,7 +52,7 @@ const Signup = () => {
           height: "89.3vh",
           justifyContent: "center",
           alignItems: "center",
-          bgcolor: "#E0F5E6",
+          bgcolor: "primary.main",
         }}
       >
         <Paper
