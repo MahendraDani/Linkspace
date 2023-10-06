@@ -56,7 +56,7 @@ const Signup = () => {
         }}
       >
         <Paper
-          sx={{ p: 3, bgcolor: "primary.main", minWidth: "25rem" }}
+          sx={{ p: 3, bgcolor: "lightCyan.main", minWidth: "25rem" }}
           square
           elevation={0}
         >

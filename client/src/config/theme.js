@@ -6,7 +6,7 @@ export const theme = createTheme({
       main: "#BBDDD4",
     },
     secondary: {
-      main: "#8fccc0",
+      main: "#BCDCDB",
     },
     gray: {
       main: "#5C5C5C",
@@ -14,5 +14,14 @@ export const theme = createTheme({
     greenBackground: {
       main: "#E5F0F1",
     },
+    darkGreen: {
+      main: "#8fccc0",
+    },
+    lightCyan: {
+      main: "#CAE3E3",
+    },
   },
 });
+
+// #BCDCDB
+// #8fccc0
