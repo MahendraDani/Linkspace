@@ -68,12 +68,14 @@ const Login = () => {
               <Typography variant="h5">Login to your Account</Typography>
             </Box>
             <TextField
-              sx={{ width: "100%", "::after": { color: "red" } }}
+              color="gray"
+              sx={{ width: "100%" }}
               label="Email"
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
+              color="gray"
               sx={{ width: "100%" }}
               label="Password"
               type="password"

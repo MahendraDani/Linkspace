@@ -71,18 +71,21 @@ const Signup = () => {
               <Typography variant="h5">Create Account</Typography>
             </Box>
             <TextField
+              color="gray"
               sx={{ width: "100%", ":focus": { color: "red" } }}
               label="Name"
               variant="outlined"
               onChange={(e) => setName(e.target.value)}
             />
             <TextField
+              color="gray"
               sx={{ width: "100%" }}
               label="Email"
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
+              color="gray"
               sx={{ width: "100%" }}
               label="Password"
               type="password"
