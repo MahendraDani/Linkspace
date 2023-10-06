@@ -61,14 +61,20 @@ const Sidebar = ({
   return (
     <Box
       sx={{
-        display: { xs: "none", md: "block" },
+        display: { xs: "none", md: "flex" },
         flex: 2,
         p: 2,
         borderRight: "1px solid",
+        borderLeft: "1px solid",
         borderColor: "secondary.main",
+        justifyContent: "center",
       }}
     >
-      <Box sx={{ position: "absolute" }}>
+      <Box
+        sx={{
+          position: "absolute",
+        }}
+      >
         <Stack gap={2}>
           <Box>
             <Typography variant="h5" fontWeight={600} textAlign={"center"}>

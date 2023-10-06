@@ -11,7 +11,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { Edit, Delete, OpenInNew, MoreVert } from "@mui/icons-material";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  OpenInNew,
+  MoreVert,
+} from "@mui/icons-material";
 import axios from "axios";
 
 const LinkTableItem = ({ link }) => {
@@ -133,7 +138,7 @@ const LinkTableItem = ({ link }) => {
         </Box> */}
         <Box>
           <IconButton>
-            <Edit
+            <EditOutlined
               fontSize="small"
               sx={{
                 color: "gray.main",
@@ -148,7 +153,7 @@ const LinkTableItem = ({ link }) => {
               deleteLink(link.linkID);
             }}
           >
-            <Delete
+            <DeleteOutlined
               fontSize="small"
               sx={{
                 color: "gray.main",
@@ -240,7 +245,7 @@ const LinkTableItem = ({ link }) => {
           <Stack sx={{ p: 1.5, bgcolor: "secondary.main", gap: 1 }}>
             <Box>
               <IconButton>
-                <Edit
+                <EditOutlined
                   fontSize="small"
                   sx={{
                     cursor: "pointer",
@@ -255,7 +260,7 @@ const LinkTableItem = ({ link }) => {
                   deleteLink(link.linkID);
                 }}
               >
-                <Delete
+                <DeleteOutlined
                   fontSize="small"
                   sx={{
                     cursor: "pointer",
