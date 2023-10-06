@@ -96,19 +96,16 @@ const TagTableItem = ({ tag }) => {
           display: { xs: "none", md: "flex" },
         }}
       >
-        <Box>
+        {/* <Box>
           <Typography variant="body2">{tag.createdOn}</Typography>
-        </Box>
+        </Box> */}
         <Box>
           <IconButton>
             <Edit
               fontSize="small"
               sx={{
                 cursor: "pointer",
-                "&:hover": {
-                  transform: "scale(1.2)",
-                  transition: "all 0.3s ease-in",
-                },
+                color: "gray.main",
               }}
             />
           </IconButton>
@@ -122,10 +119,8 @@ const TagTableItem = ({ tag }) => {
             <Delete
               fontSize="small"
               sx={{
-                "&:hover": {
-                  transform: "scale(1.1)",
-                  transition: "all 0.3s ease-in",
-                },
+                cursor: "pointer",
+                color: "gray.main",
               }}
             />
           </IconButton>
@@ -137,7 +132,7 @@ const TagTableItem = ({ tag }) => {
           variant="contained"
           onClick={handleClick}
         >
-          <MoreVert />
+          <MoreVert sx={{ color: "gray.main" }} />
         </IconButton>
         <Popover
           id={id}
@@ -149,17 +144,14 @@ const TagTableItem = ({ tag }) => {
             horizontal: "left",
           }}
         >
-          <Stack sx={{ p: 1 }}>
+          <Stack sx={{ p: 1, gap: 1, bgcolor: "secondary.main" }}>
             <Box>
               <IconButton>
                 <Edit
                   fontSize="small"
                   sx={{
                     cursor: "pointer",
-                    "&:hover": {
-                      transform: "scale(1.2)",
-                      transition: "all 0.3s ease-in",
-                    },
+                    color: "gray.main",
                   }}
                 />
               </IconButton>
@@ -173,10 +165,8 @@ const TagTableItem = ({ tag }) => {
                 <Delete
                   fontSize="small"
                   sx={{
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "all 0.3s ease-in",
-                    },
+                    color: "gray.main",
+                    cursor: "pointer",
                   }}
                 />
               </IconButton>
