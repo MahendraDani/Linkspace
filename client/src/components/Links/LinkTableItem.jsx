@@ -181,7 +181,7 @@ const LinkTableItem = ({ link }) => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: 400,
-              bgcolor: "#E0F5E6",
+              bgcolor: "secondary.main",
               boxShadow: 16,
               p: 4,
             }}
@@ -200,18 +200,19 @@ const LinkTableItem = ({ link }) => {
                 <Typography>{link.link}</Typography>
               </Box>
               <Stack direction={"row"} gap={2}>
-                <Button
-                  variant="outlined"
-                  color="info"
-                  onClick={handleCloseWarning}
-                >
-                  Go Back
-                </Button>
                 <Link href={link.link} target="_blank">
                   <Button
                     variant="contained"
                     disableElevation
-                    color="success"
+                    sx={{
+                      border: "1px solid",
+                      borderColor: "black",
+                      bgcolor: "transparent",
+                      ":hover": {
+                        bgcolor: "black",
+                        color: "lightCyan.main",
+                      },
+                    }}
                     endIcon={<OpenInNew />}
                   >
                     Visit Site
@@ -289,7 +290,7 @@ const LinkTableItem = ({ link }) => {
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                   width: 400,
-                  bgcolor: "#E0F5E6",
+                  bgcolor: "secondary.main",
                   boxShadow: 16,
                   p: 4,
                 }}
@@ -308,18 +309,19 @@ const LinkTableItem = ({ link }) => {
                     <Typography>{link.link}</Typography>
                   </Box>
                   <Stack direction={"row"} gap={2}>
-                    <Button
-                      variant="outlined"
-                      color="info"
-                      onClick={handleCloseWarning}
-                    >
-                      Go Back
-                    </Button>
                     <Link href={link.link} target="_blank">
                       <Button
                         variant="contained"
                         disableElevation
-                        color="success"
+                        sx={{
+                          border: "1px solid",
+                          borderColor: "black",
+                          bgcolor: "transparent",
+                          ":hover": {
+                            bgcolor: "black",
+                            color: "lightCyan.main",
+                          },
+                        }}
                         endIcon={<OpenInNew />}
                       >
                         Visit Site
