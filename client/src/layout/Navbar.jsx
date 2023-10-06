@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div>
-      <Box sx={{ bgcolor: "#E0F5E6", p: 1, borderBottom: "2px solid #81D99C" }}>
+      <Box
+        sx={{
+          bgcolor: "primary.main",
+          p: 1,
+          borderBottom: "1px solid",
+          borderColor: "secondary.main",
+        }}
+      >
         <Container
           sx={{
             height: "4rem",
