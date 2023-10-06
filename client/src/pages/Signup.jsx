@@ -56,9 +56,9 @@ const Signup = () => {
         }}
       >
         <Paper
-          sx={{ p: 3, bgcolor: "#9CE7B8", minWidth: "25rem" }}
+          sx={{ p: 3, bgcolor: "secondary.main", minWidth: "25rem" }}
           square
-          elevation={1}
+          elevation={0}
         >
           <Stack
             sx={{
@@ -71,7 +71,7 @@ const Signup = () => {
               <Typography variant="h5">Create Account</Typography>
             </Box>
             <TextField
-              sx={{ width: "100%" }}
+              sx={{ width: "100%", ":focus": { color: "red" } }}
               label="Name"
               variant="outlined"
               onChange={(e) => setName(e.target.value)}

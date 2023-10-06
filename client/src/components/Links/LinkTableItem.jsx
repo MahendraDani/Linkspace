@@ -51,13 +51,13 @@ const LinkTableItem = ({ link }) => {
       direction={"row"}
       sx={{
         borderBottom: "1px solid",
-        borderColor: "primary.main",
+        borderColor: "secondary.main",
         justifyContent: "space-between",
         alignItems: "center",
         transition: "all 0.3s ease-in",
         px: 2,
         ":hover": {
-          bgcolor: "primary.main",
+          bgcolor: "secondary.main",
         },
       }}
     >

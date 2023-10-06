@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
-  Card,
   Paper,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
 
@@ -40,6 +39,7 @@ const Login = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       <Navbar />
@@ -53,9 +53,9 @@ const Login = () => {
         }}
       >
         <Paper
-          sx={{ p: 3, bgcolor: "#9CE7B8", minWidth: "25rem" }}
+          sx={{ p: 3, bgcolor: "secondary.main", minWidth: "25rem" }}
           square
-          elevation={1}
+          elevation={0}
         >
           <Stack
             sx={{
@@ -68,7 +68,7 @@ const Login = () => {
               <Typography variant="h5">Login to your Account</Typography>
             </Box>
             <TextField
-              sx={{ width: "100%" }}
+              sx={{ width: "100%", "::after": { color: "red" } }}
               label="Email"
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
