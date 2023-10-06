@@ -10,7 +10,7 @@ const Footer = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          bgcolor: "primary.main",
+          bgcolor: "greenBackground.main",
           borderTop: "1px solid ",
           borderColor: "secondary.main",
           p: 1,

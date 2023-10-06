@@ -52,11 +52,11 @@ const Signup = () => {
           height: "89.3vh",
           justifyContent: "center",
           alignItems: "center",
-          bgcolor: "primary.main",
+          bgcolor: "greenBackground.main",
         }}
       >
         <Paper
-          sx={{ p: 3, bgcolor: "secondary.main", minWidth: "25rem" }}
+          sx={{ p: 3, bgcolor: "primary.main", minWidth: "25rem" }}
           square
           elevation={0}
         >
