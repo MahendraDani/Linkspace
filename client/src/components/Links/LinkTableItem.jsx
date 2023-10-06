@@ -50,14 +50,14 @@ const LinkTableItem = ({ link }) => {
     <Stack
       direction={"row"}
       sx={{
-        border: "1px solid #C1EBCC",
-        // borderBottom: "none",
+        borderBottom: "1px solid",
+        borderColor: "primary.main",
         justifyContent: "space-between",
         alignItems: "center",
         transition: "all 0.3s ease-in",
         px: 2,
         ":hover": {
-          bgcolor: "#C1EBCC",
+          bgcolor: "primary.main",
         },
       }}
     >

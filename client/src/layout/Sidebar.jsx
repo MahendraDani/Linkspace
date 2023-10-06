@@ -50,10 +50,12 @@ const Sidebar = ({
     textTransform: "none",
     minWidth: { lg: "12rem", md: "10rem" },
     textAlign: "center",
-    border: "2px solid #D1F0DA",
+    border: "2px solid",
+    borderColor: "primary.main",
     ":hover": {
-      bgcolor: "#A1E3B5",
-      border: "2px solid #A1E3B5",
+      bgcolor: "secondary.main",
+      border: "2px solid",
+      borderColor: "secondary.main",
     },
   };
   return (
@@ -62,7 +64,8 @@ const Sidebar = ({
         display: { xs: "none", md: "block" },
         flex: 2,
         p: 2,
-        borderRight: "1px solid #C1EBCC",
+        borderRight: "1px solid",
+        borderColor: "secondary.main",
       }}
     >
       <Box sx={{ position: "absolute" }}>
