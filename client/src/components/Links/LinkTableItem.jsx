@@ -128,19 +128,16 @@ const LinkTableItem = ({ link }) => {
           display: { xs: "none", md: "flex" },
         }}
       >
-        <Box>
+        {/* <Box>
           <Typography variant="body2">{link.createdOn}</Typography>
-        </Box>
+        </Box> */}
         <Box>
           <IconButton>
             <Edit
               fontSize="small"
               sx={{
+                color: "gray.main",
                 cursor: "pointer",
-                "&:hover": {
-                  transform: "scale(1.2)",
-                  transition: "all 0.3s ease-in",
-                },
               }}
             />
           </IconButton>
@@ -154,10 +151,7 @@ const LinkTableItem = ({ link }) => {
             <Delete
               fontSize="small"
               sx={{
-                "&:hover": {
-                  transform: "scale(1.1)",
-                  transition: "all 0.3s ease-in",
-                },
+                color: "gray.main",
               }}
             />
           </IconButton>
@@ -167,11 +161,8 @@ const LinkTableItem = ({ link }) => {
             <OpenInNew
               fontSize="small"
               sx={{
+                color: "gray.main",
                 cursor: "pointer",
-                "&:hover": {
-                  transform: "scale(1.1)",
-                  transition: "all 0.3s ease-in",
-                },
               }}
             />
           </IconButton>
@@ -229,11 +220,12 @@ const LinkTableItem = ({ link }) => {
 
       <Box sx={{ display: { xs: "block", md: "none" } }}>
         <IconButton
+          // sx={{ color: "secondary.main" }}
           aria-describedby={id}
           variant="contained"
           onClick={handleClick}
         >
-          <MoreVert />
+          <MoreVert sx={{ color: "gray.main" }} />
         </IconButton>
         <Popover
           id={id}
@@ -245,17 +237,14 @@ const LinkTableItem = ({ link }) => {
             horizontal: "left",
           }}
         >
-          <Stack sx={{ p: 1 }}>
+          <Stack sx={{ p: 1.5, bgcolor: "secondary.main", gap: 1 }}>
             <Box>
               <IconButton>
                 <Edit
                   fontSize="small"
                   sx={{
                     cursor: "pointer",
-                    "&:hover": {
-                      transform: "scale(1.2)",
-                      transition: "all 0.3s ease-in",
-                    },
+                    color: "gray.main",
                   }}
                 />
               </IconButton>
@@ -269,10 +258,8 @@ const LinkTableItem = ({ link }) => {
                 <Delete
                   fontSize="small"
                   sx={{
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "all 0.3s ease-in",
-                    },
+                    cursor: "pointer",
+                    color: "gray.main",
                   }}
                 />
               </IconButton>
@@ -283,10 +270,7 @@ const LinkTableItem = ({ link }) => {
                   fontSize="small"
                   sx={{
                     cursor: "pointer",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                      transition: "all 0.3s ease-in",
-                    },
+                    color: "gray.main",
                   }}
                 ></OpenInNew>
               </IconButton>
