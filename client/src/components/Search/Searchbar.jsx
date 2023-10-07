@@ -93,25 +93,32 @@ const Searchbar = () => {
             left: { md: "50%", xs: 0 },
             bottom: { md: "50%", xs: 0 },
             right: { md: "50%", xs: 0 },
-
             transform: { md: "translate(-50%, -50%)" },
-            width: { md: 400 },
+            width: { md: 800 },
+            minHeight: { md: "fit-content" },
+            maxHeight: { md: 600 },
             bgcolor: "secondary.main",
             boxShadow: 24,
-            overflow: "scroll",
-            p: { md: 4 },
+            p: { md: 0 },
+            overflowY: "scroll",
           }}
         >
-          <Stack>
+          <Stack sx={{ position: "relative" }}>
             <Stack
               direction={"row"}
               sx={{
+                position: "sticky",
+                zIndex: 10,
+                top: 0,
+                right: 0,
+                left: 0,
                 p: 1.5,
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 1,
                 borderBottom: "1px solid",
                 borderColor: "greenBackground.main",
+                bgcolor: "darkGreen.main",
               }}
             >
               <Box>

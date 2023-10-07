@@ -9,3 +9,15 @@ body{
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
+::-webkit-scrollbar{
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #CAE3E3;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#4B9395  ;
+}
