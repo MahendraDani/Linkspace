@@ -23,6 +23,7 @@ import {
 import { useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
 import CreateTag from "../components/Tags/CreateTag";
+import Searchbar from "../components/Search/Searchbar";
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -147,7 +148,9 @@ const DashNavbar = () => {
               gap: 2,
             }}
           >
-            <Box></Box>
+            <Box>
+              <Searchbar />
+            </Box>
             <Box>
               <IconButton onClick={handleClick}>
                 <Avatar {...stringAvatar(localStorage.getItem("name"))} />
