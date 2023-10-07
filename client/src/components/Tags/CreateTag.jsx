@@ -46,7 +46,7 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: 400,
-            bgcolor: "#E0F5E6",
+            bgcolor: "secondary.main",
             boxShadow: 16,
             p: 4,
           }}
@@ -59,6 +59,7 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
             </Box>
             <Box>
               <TextField
+                color="gray"
                 variant="outlined"
                 label="Name"
                 onChange={(e) => {
@@ -69,6 +70,7 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
             </Box>
             <Box>
               <TextField
+                color="gray"
                 variant="outlined"
                 multiline
                 onChange={(e) => {
@@ -79,9 +81,26 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
               />
             </Box>
             <Box sx={{ textAlign: "center" }}>
-              <Button
+              {/* <Button
                 variant="outlined"
                 startIcon={<Add />}
+                onClick={handleCreateTag}
+              >
+                Create
+              </Button> */}
+              <Button
+                variant="contained"
+                disableElevation
+                startIcon={<Add />}
+                sx={{
+                  border: "1px solid #433C53",
+                  bgcolor: "transparent",
+                  color: "#433C53",
+                  ":hover": {
+                    bgcolor: "#393347",
+                    color: "white",
+                  },
+                }}
                 onClick={handleCreateTag}
               >
                 Create

@@ -27,8 +27,11 @@ const MulitInput = ({ handleChange, inputTags, userTags }) => {
   return (
     <div>
       <FormControl sx={{ width: "100%" }}>
-        <InputLabel id="demo-multiple-chip-label">Tags</InputLabel>
+        <InputLabel color="gray" id="demo-multiple-chip-label">
+          Tags
+        </InputLabel>
         <Select
+          color="gray"
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple

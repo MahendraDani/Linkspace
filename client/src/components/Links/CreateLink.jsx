@@ -59,7 +59,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: 400,
-              bgcolor: "#E0F5E6",
+              bgcolor: "secondary.main",
               boxShadow: 16,
               p: 4,
             }}
@@ -72,6 +72,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
               </Box>
               <Box>
                 <TextField
+                  color="gray"
                   variant="outlined"
                   label="Title"
                   sx={{ width: "100%" }}
@@ -80,6 +81,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
               </Box>
               <Box>
                 <TextField
+                  color="gray"
                   variant="outlined"
                   multiline
                   label="Link"
@@ -96,8 +98,18 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
               </Box>
               <Box sx={{ textAlign: "center" }}>
                 <Button
-                  variant="outlined"
+                  variant="contained"
+                  disableElevation
                   startIcon={<Add />}
+                  sx={{
+                    border: "1px solid #433C53",
+                    bgcolor: "transparent",
+                    color: "#433C53",
+                    ":hover": {
+                      bgcolor: "#393347",
+                      color: "white",
+                    },
+                  }}
                   onClick={handleCreateLink}
                 >
                   Create
