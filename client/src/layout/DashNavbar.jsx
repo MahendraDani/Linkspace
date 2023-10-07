@@ -1,34 +1,23 @@
-import {
-  Add,
-  AddLink,
-  BookmarkAdd,
-  BookmarkAddOutlined,
-  ExpandMore,
-  Logout,
-  Search,
-} from "@mui/icons-material";
+import { AddLink, BookmarkAddOutlined, Logout } from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Button,
   IconButton,
-  Menu,
-  MenuItem,
-  Paper,
   Popover,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateLink from "../components/Links/CreateLink";
 import CreateTag from "../components/Tags/CreateTag";
 import Searchbar from "../components/Search/Searchbar";
+import axios from "axios";
+
 function stringToColor(string) {
   let hash = 0;
   let i;
 
-  /* eslint-disable no-bitwise */
   for (i = 0; i < string.length; i += 1) {
     hash = string.charCodeAt(i) + ((hash << 5) - hash);
   }
@@ -39,7 +28,6 @@ function stringToColor(string) {
     const value = (hash >> (i * 8)) & 0xff;
     color += `00${value.toString(16)}`.slice(-2);
   }
-  /* eslint-enable no-bitwise */
 
   return color;
 }
@@ -102,12 +90,33 @@ const DashNavbar = () => {
   const handleOpenCreateTagModal = () => {
     setShowCreateTagModal(true);
   };
+  const [tags, setTags] = useState([]);
+  const getTagsOfUsers = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
+          "userID"
+        )}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      setTags(response.data.tags);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getTagsOfUsers();
+  }, []);
   return (
     // #43C76A
     <Box
       sx={{
         width: "100%",
-        p: 1,
+        p: 0.5,
         px: { md: 10 },
         bgcolor: "secondary.main",
         mb: 4,
@@ -123,23 +132,6 @@ const DashNavbar = () => {
               Linkspace
             </Typography>
           </Box>
-          {/* <Stack
-          direction={"row"}
-          sx={{
-            alignItems: "center",
-            justifyContent: "space-between",
-            display: { xs: "none", md: "block" },
-          }}
-        >
-          <input
-            type="text"
-            className="w-56 border-2 border-gray-500 focus: outline-none p-1 rounded-sm"
-            placeholder="Search..."
-          />
-          <IconButton>
-            <Search />
-          </IconButton>
-        </Stack> */}
           <Stack
             direction={"row"}
             sx={{
@@ -177,6 +169,7 @@ const DashNavbar = () => {
                   <CreateLink
                     showModal={showModal}
                     handleCloseModal={handleCloseModal}
+                    userTags={tags}
                   />
                   <Button
                     variant="standard"

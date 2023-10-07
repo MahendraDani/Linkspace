@@ -1,6 +1,6 @@
 import { Box, Button, Modal, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Search } from "@mui/icons-material";
+import { Search, ArrowBackOutlined } from "@mui/icons-material";
 import axios from "axios";
 import SearchItem from "./SearchItem";
 
@@ -111,18 +111,23 @@ const Searchbar = () => {
                 alignItems: "center",
                 gap: 1,
                 borderBottom: "1px solid",
-                borderColor: "gray.main",
+                borderColor: "greenBackground.main",
               }}
             >
               <Box>
-                <Search sx={{ color: "gray.main" }} />
+                <ArrowBackOutlined
+                  sx={{ color: "gray.main", cursor: "pointer" }}
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                />
               </Box>
               <input
                 className="w-[100%] p-2 bg-transparent focus:outline-none text-xl placeholder:text-[#5C5C5C]"
                 placeholder="Search..."
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <Box
+              {/* <Box
                 sx={{
                   border: "1px solid",
                   borderColor: "success",
@@ -133,9 +138,12 @@ const Searchbar = () => {
                 }}
               >
                 <Typography variant="body2">Esc</Typography>
+              </Box> */}
+              <Box>
+                <Search sx={{ color: "gray.main" }} />
               </Box>
             </Stack>
-            <Stack sx={{ p: 1 }}>
+            <Stack sx={{}}>
               <div>
                 <SearchItem links={links} query={query} />
               </div>
