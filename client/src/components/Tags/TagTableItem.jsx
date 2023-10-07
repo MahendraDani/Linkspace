@@ -71,10 +71,10 @@ const TagTableItem = ({ tag }) => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  bgcolor: "#AFF5FE",
+                  bgcolor: "mediumGreen.main",
                   py: 0.3,
                   px: 1.1,
-                  borderRadius: "5px",
+                  borderRadius: 3,
                   fontSize: 12,
                 }}
               >

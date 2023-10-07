@@ -38,7 +38,11 @@ const MulitInput = ({ handleChange, inputTags, userTags }) => {
           renderValue={(selected) => (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
               {selected.map((value) => (
-                <Chip key={value} label={value} sx={{ bgcolor: "skyblue" }} />
+                <Chip
+                  key={value}
+                  label={value}
+                  sx={{ bgcolor: "mediumGreen.main" }}
+                />
               ))}
             </Box>
           )}

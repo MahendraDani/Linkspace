@@ -20,6 +20,9 @@ export const theme = createTheme({
     lightCyan: {
       main: "#CAE3E3",
     },
+    mediumGreen: {
+      main: "#A0CECF",
+    },
   },
 });
 
