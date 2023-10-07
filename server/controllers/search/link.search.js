@@ -30,7 +30,7 @@ const searchLinksByTagName = async (req, res) => {
       return;
     }
 
-    res.status(statusCodes.SUCCESS).json({ searchedLinks });
+    res.status(statusCodes.SUCCESS).json({ links: searchedLinks });
   } catch (error) {
     console.log(error);
   }
