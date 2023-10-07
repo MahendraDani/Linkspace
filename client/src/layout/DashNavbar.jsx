@@ -115,6 +115,9 @@ const DashNavbar = () => {
     // #43C76A
     <Box
       sx={{
+        position: "sticky",
+        top: 0,
+        zIndex: 10,
         width: "100%",
         p: 0.5,
         px: { md: 10 },
