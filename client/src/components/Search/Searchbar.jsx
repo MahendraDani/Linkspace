@@ -30,11 +30,29 @@ const Searchbar = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [query, setQuery] = useState("");
+  const [tagName, setTagName] = useState("");
+  const findLinksByTagName = async () => {
+    try {
+      const userID = localStorage.getItem("userID");
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `http://localhost:3000/api/users/search/links/${userID}`,
+        {
+          tagName: "mathematics",
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const toggleSearchBar = () => {
     setOpen(!open);
   };
-
   const getLinksOfUser = async () => {
     try {
       const response = await axios.get(
@@ -59,7 +77,7 @@ const Searchbar = () => {
   const [appliedFilter, setAppliedFilter] = useState("");
 
   const handleSelectedFilter = () => {
-    if (appliedFilter === "link") {
+    if (appliedFilter === "links") {
       setistitleFilter(false);
       setisTagFilter(false);
       setisLinkFilter(true);
@@ -71,11 +89,13 @@ const Searchbar = () => {
       setistitleFilter(true);
       return;
     }
-    if (appliedFilter === "tag") {
+    if (appliedFilter === "tags") {
       setisLinkFilter(false);
       setistitleFilter(false);
       setisTagFilter(true);
     }
+
+    setAppliedFilter("none");
   };
 
   const removeSelectedFilter = () => {
@@ -120,6 +140,7 @@ const Searchbar = () => {
   useEffect(() => {
     handleSelectedFilter();
   }, [appliedFilter]);
+
   return (
     <>
       <Button
@@ -170,11 +191,10 @@ const Searchbar = () => {
             overflowY: "scroll",
           }}
         >
-          <Stack sx={{ position: "relative" }}>
+          <Stack>
             <Stack
               direction={"row"}
               sx={{
-                position: "sticky",
                 zIndex: 10,
                 top: 0,
                 right: 0,
@@ -236,7 +256,7 @@ const Searchbar = () => {
                         textTransform: "none",
                       }}
                       onClick={() => {
-                        setAppliedFilter("link");
+                        setAppliedFilter("links");
                         handleFilterMenuClose();
                       }}
                     >
@@ -251,7 +271,7 @@ const Searchbar = () => {
                         textTransform: "none",
                       }}
                       onClick={() => {
-                        setAppliedFilter("tag");
+                        setAppliedFilter("tags");
                         handleFilterMenuClose();
                       }}
                     >
@@ -342,17 +362,29 @@ const Searchbar = () => {
                 id="searchbar"
                 className="w-[100%] p-2 bg-transparent focus:outline-none text-xl placeholder:text-[#5C5C5C]"
                 placeholder="Search..."
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  // setTagName(e.target.value);
+                }}
               />
               <Stack>
-                <IconButton>
+                <IconButton
+                // onClick={() => {
+                //   findLinksByTagName();
+                //   alert(tagName);
+                // }}
+                >
                   <Search sx={{ color: "gray.main" }} />
                 </IconButton>
               </Stack>
             </Stack>
             <Stack>
               <div>
-                <SearchItem links={links} query={query} />
+                <SearchItem
+                  links={links}
+                  query={query}
+                  selectedFilter={appliedFilter}
+                />
               </div>
             </Stack>
           </Stack>

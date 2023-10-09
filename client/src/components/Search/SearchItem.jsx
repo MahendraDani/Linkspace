@@ -1,18 +1,9 @@
-import { OpenInNew } from "@mui/icons-material";
-import {
-  Alert,
-  Box,
-  Button,
-  IconButton,
-  Link,
-  Modal,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Stack } from "@mui/material";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import SearchLinkItem from "./SearchLinkItem";
 
-const SearchItem = ({ links, query }) => {
+const SearchItem = ({ links, query, selectedFilter }) => {
   // const findLinksByTagName = async () => {
   //   try {
   //     const userID = localStorage.getItem("userID");
@@ -26,15 +17,27 @@ const SearchItem = ({ links, query }) => {
   //         },
   //       }
   //     );
+  //     console.log(response);
   //   } catch (error) {
   //     console.log(error);
   //   }
   // };
+  const searchedLinksByTitle = links.filter((link) => {
+    if (link.title.toLowerCase().includes(query.toLowerCase())) {
+      return link;
+    }
+  });
 
-  const searchedLinks = links.filter((link) => {
+  const searchedLinksByLink = links.filter((link) => {
+    if (link.link.toLowerCase().includes(query.toLowerCase())) {
+      return link;
+    }
+  });
+
+  const searchByAll = links.filter((link) => {
     if (
-      link.title.toLowerCase().includes(query.toLowerCase()) ||
-      link.link.toLowerCase().includes(query.toLowerCase())
+      link.link.toLowerCase().includes(query.toLowerCase()) ||
+      link.title.toLowerCase().includes(query.toLowerCase())
     ) {
       return link;
     }
@@ -43,83 +46,19 @@ const SearchItem = ({ links, query }) => {
     <>
       {/* Search Item Container */}
       <Stack>
-        {searchedLinks.map((link, index) => {
-          return (
-            <Stack
-              direction={"row"}
-              key={index}
-              sx={{
-                border: "1px solid",
-                borderColor: "lightCyan.main",
-                p: 0.2,
-                px: 2,
-                justifyContent: "space-between",
-                alignItems: "center",
-                transition: "all 0.3s ease-in",
-                ":hover": {
-                  bgcolor: "darkGreen.main",
-                  cursor: "pointer",
-                  borderColor: "darkGreen.main",
-                },
-              }}
-            >
-              <Stack
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <Stack direction={"row"} sx={{ gap: 1, flexWrap: "wrap" }}>
-                  <Typography variant="h6" fontWeight={400}>
-                    {link.title}
-                  </Typography>
-                  <Stack
-                    direction={"row"}
-                    sx={{
-                      justifyContent: "start",
-                      alignItems: "center",
-                      gap: 1,
-                    }}
-                  >
-                    {link.tags.map((tag, index) => {
-                      return (
-                        <Box key={index}>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              bgcolor: "mediumGreen.main",
-                              py: 0.3,
-                              px: 0.9,
-                              borderRadius: "20px",
-                              fontSize: 12,
-                            }}
-                          >
-                            {tag}
-                          </Typography>
-                        </Box>
-                      );
-                    })}
-                  </Stack>
-                </Stack>
-                <Typography variant="subtitle1">{link.link}</Typography>
-              </Stack>
-              <Box>
-                <Box>
-                  <Link href={link.link} target="_blank">
-                    <IconButton>
-                      <OpenInNew
-                        fontSize="small"
-                        sx={{
-                          color: "gray.main",
-                          cursor: "pointer",
-                        }}
-                      />
-                    </IconButton>
-                  </Link>
-                </Box>
-              </Box>
-            </Stack>
-          );
-        })}
+        {selectedFilter === "title" ? (
+          <SearchLinkItem searchedLinks={searchedLinksByTitle} />
+        ) : null}
+      </Stack>
+      <Stack>
+        {selectedFilter === "links" ? (
+          <SearchLinkItem searchedLinks={searchedLinksByLink} />
+        ) : null}
+      </Stack>
+      <Stack>
+        {selectedFilter === "none" ? (
+          <SearchLinkItem searchedLinks={searchByAll} />
+        ) : null}
       </Stack>
     </>
   );
