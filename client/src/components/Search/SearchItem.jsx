@@ -86,7 +86,7 @@ const SearchItem = ({ links, query }) => {
                           <Typography
                             variant="body2"
                             sx={{
-                              bgcolor: "#AFF5FE",
+                              bgcolor: "mediumGreen.main",
                               py: 0.3,
                               px: 0.9,
                               borderRadius: "20px",
