@@ -9,7 +9,13 @@ import { ArrowRightAltOutlined } from "@mui/icons-material";
 const Home = () => {
   return (
     // #F0FAF3
-    <Box sx={{ bgcolor: "white", minHeight: "100vh" }}>
+    <Box
+      sx={{
+        bgcolor: "white",
+        minHeight: "100vh",
+        bgcolor: "greenBackground.main",
+      }}
+    >
       <Navbar />
       <Box
         sx={{

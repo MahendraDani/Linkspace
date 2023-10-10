@@ -7,7 +7,7 @@ const Navbar = () => {
     <div>
       <Box
         sx={{
-          bgcolor: "white",
+          bgcolor: "greenBackground.main",
           p: 1,
           borderBottom: "1px solid",
           borderColor: "secondary.main",
