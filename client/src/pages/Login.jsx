@@ -49,7 +49,7 @@ const Login = () => {
           height: "89.3vh",
           justifyContent: "center",
           alignItems: "center",
-          bgcolor: "white",
+          bgcolor: "greenBackground.main",
         }}
       >
         <Paper
@@ -111,7 +111,7 @@ const Login = () => {
           </Box>
         </Paper>
       </Stack>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

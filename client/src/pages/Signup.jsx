@@ -52,7 +52,7 @@ const Signup = () => {
           height: "89.3vh",
           justifyContent: "center",
           alignItems: "center",
-          bgcolor: "white",
+          bgcolor: "greenBackground.main",
         }}
       >
         <Paper
@@ -121,7 +121,7 @@ const Signup = () => {
           </Box>
         </Paper>
       </Stack>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
