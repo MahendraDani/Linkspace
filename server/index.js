@@ -79,6 +79,12 @@ app.use(
   require("./routes/links/update/updateLinkById")
 );
 
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/tags/update/updateTagById")
+);
+
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);
 });
