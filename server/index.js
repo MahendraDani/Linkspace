@@ -73,6 +73,11 @@ app.use(
 );
 
 app.use("/api/users", validateUser, require("./routes/search/link.search"));
+app.use(
+  "/api/users",
+  validateUser,
+  require("./routes/links/update/updateLinkById")
+);
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);

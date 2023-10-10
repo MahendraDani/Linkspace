@@ -74,28 +74,30 @@ const Searchbar = () => {
   const [isLinkFilter, setisLinkFilter] = useState(false);
   const [istitleFilter, setistitleFilter] = useState(false);
   const [isTagFilter, setisTagFilter] = useState(false);
-  const [appliedFilter, setAppliedFilter] = useState("");
+  const [appliedFilter, setAppliedFilter] = useState("none");
 
   const handleSelectedFilter = () => {
     if (appliedFilter === "links") {
       setistitleFilter(false);
       setisTagFilter(false);
       setisLinkFilter(true);
+      console.log("links");
       return;
     }
     if (appliedFilter === "title") {
       setisLinkFilter(false);
       setisTagFilter(false);
       setistitleFilter(true);
+      console.log("title");
       return;
     }
     if (appliedFilter === "tags") {
       setisLinkFilter(false);
       setistitleFilter(false);
       setisTagFilter(true);
+      console.log("tags");
+      return;
     }
-
-    setAppliedFilter("none");
   };
 
   const removeSelectedFilter = () => {

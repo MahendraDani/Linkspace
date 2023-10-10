@@ -22,6 +22,25 @@ const SearchItem = ({ links, query, selectedFilter }) => {
   //     console.log(error);
   //   }
   // };
+  let foundLinks = [];
+  const [linksSearchedByTags, setLinksSearchedByTags] = useState([]);
+  const handleSearchedLinksByTag = () => {
+    const searchedLinksByTags = links.filter((link) => {
+      if (
+        link.tags.forEach((tag) => {
+          if (tag.toLowerCase() === query.toLowerCase()) {
+            for (let i = 0; i < foundLinks.length; i++) {
+              foundLinks[i] = link;
+            }
+            return null;
+          }
+        })
+      ) {
+        return foundLinks;
+      }
+    });
+    setLinksSearchedByTags(searchedLinksByTags);
+  };
   const searchedLinksByTitle = links.filter((link) => {
     if (link.title.toLowerCase().includes(query.toLowerCase())) {
       return link;
@@ -34,6 +53,18 @@ const SearchItem = ({ links, query, selectedFilter }) => {
     }
   });
 
+  // const searchedLinksByTags = links.filter((link) => {
+  //   if (
+  //     link.tags.forEach((tag) => {
+  //       if (tag.toLowerCase() === query.toLowerCase()) {
+  //         console.log(link);
+  //         return link;
+  //       }
+  //     })
+  //   )
+  //     return link;
+  // });
+
   const searchByAll = links.filter((link) => {
     if (
       link.link.toLowerCase().includes(query.toLowerCase()) ||
@@ -42,6 +73,9 @@ const SearchItem = ({ links, query, selectedFilter }) => {
       return link;
     }
   });
+  // useEffect(() => {
+  //   handleSearchedLinksByTag();
+  // }, [linksSearchedByTags]);
   return (
     <>
       {/* Search Item Container */}
@@ -60,6 +94,11 @@ const SearchItem = ({ links, query, selectedFilter }) => {
           <SearchLinkItem searchedLinks={searchByAll} />
         ) : null}
       </Stack>
+      {/* <Stack>
+        {selectedFilter === "tags" ? (
+          <SearchLinkItem searchedLinks={linksSearchedByTags} />
+        ) : null}
+      </Stack> */}
     </>
   );
 };
