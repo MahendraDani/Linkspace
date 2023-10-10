@@ -303,6 +303,7 @@ const LinkTableItem = ({ link }) => {
             <Box>
               <IconButton
                 onClick={() => {
+                  getSelectedLink(link.linkID);
                   getTagsOfUsers();
                   handleOpenModal();
                 }}
