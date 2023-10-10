@@ -3,11 +3,12 @@ import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
 import { Typography, Box, Stack, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import HomePageTitle from "../layout/HomePageTitle";
 
 const Home = () => {
   return (
     // #F0FAF3
-    <Box sx={{ bgcolor: "greenBackground.main", minHeight: "100vh" }}>
+    <Box sx={{ bgcolor: "white", minHeight: "100vh" }}>
       <Navbar />
       <Box
         sx={{
@@ -19,83 +20,87 @@ const Home = () => {
           gap: 2,
         }}
       >
-        <Stack
+        {/* For computer screens */}
+        <div>
+          <Stack
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              gap: 1,
+              display: { xs: "none", lg: "flex" },
+            }}
+          >
+            <HomePageTitle title={"Manage"} variant={"h1"} />
+            <HomePageTitle title={"Access"} variant={"h1"} />
+            <HomePageTitle title={"Organize"} variant={"h1"} />
+          </Stack>
+        </div>
+        {/* For medium screens */}
+        <div>
+          <Stack
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              gap: 1,
+              display: { xs: "none", md: "flex", lg: "none" },
+            }}
+          >
+            <HomePageTitle title={"Manage"} variant={"h2"} />
+            <HomePageTitle title={"Access"} variant={"h2"} />
+            <HomePageTitle title={"Organize"} variant={"h2"} />
+          </Stack>
+        </div>
+        {/* For small screens */}
+        <div>
+          <Stack
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              gap: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
+            <HomePageTitle title={"Manage"} variant={"h2"} />
+            <HomePageTitle title={"Access"} variant={"h2"} />
+            <HomePageTitle title={"Organize"} variant={"h2"} />
+          </Stack>
+        </div>
+        <Box
           sx={{
-            display: { xs: "none", md: "flex" },
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: 2,
+            textAlign: "center",
+            mt: -2,
+            px: { xs: 2 },
           }}
         >
-          <Stack direction={"row"} gap={4}>
-            <Typography variant="h2" sx={{ fontWeight: "900" }}>
-              Manage
-            </Typography>
-            <Typography variant="h2" sx={{ fontWeight: "900" }}>
-              Oranize
-            </Typography>
-            <Typography variant="h2" sx={{ fontWeight: "900" }}>
-              Access
-            </Typography>
-          </Stack>
+          <Typography variant="h5" color={"#616161"}>
+            The platform to manage, organize and access your e-resources via
+            links!
+          </Typography>
+        </Box>
+        <Box sx={{ pt: 3 }}>
           <Link to={"/signup"}>
             <Button
               variant="contained"
               disableElevation
               sx={{
+                p: 0.5,
+                px: 1,
                 border: "2px solid #0D090A",
-                bgcolor: "transparent",
-                color: "black",
+                bgcolor: "#424242",
+                color: "white",
                 ":hover": {
                   bgcolor: "#0D090A",
                   color: "white",
                 },
               }}
             >
-              Signup
+              Get Started
             </Button>
           </Link>
-        </Stack>
-        {/* Only for mobile screens */}
-        <Stack
-          sx={{
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            gap: 2,
-            display: { xs: "flex", md: "none" },
-          }}
-        >
-          <Stack direction={"row"} gap={1}>
-            <Typography variant="h4" sx={{ fontWeight: "900" }}>
-              Manage
-            </Typography>
-            <Typography variant="h4" sx={{ fontWeight: "900" }}>
-              Oranize
-            </Typography>
-            <Typography variant="h4" sx={{ fontWeight: "900" }}>
-              Access
-            </Typography>
-          </Stack>
-          <Link to={"/signup"}>
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{
-                border: "2px solid #0D090A",
-                bgcolor: "transparent",
-                color: "black",
-                ":hover": {
-                  bgcolor: "#0D090A",
-                  color: "white",
-                },
-              }}
-            >
-              Signup
-            </Button>
-          </Link>
-        </Stack>
+        </Box>
       </Box>
       <Footer />
     </Box>
@@ -103,3 +108,11 @@ const Home = () => {
 };
 
 export default Home;
+
+// sx={{
+//   justifyContent: "center",
+//   alignItems: "center",
+//   flexDirection: "column",
+//   gap: 1,
+//   display: { xs: "none", md: "flex", lg: "none" },
+// }}

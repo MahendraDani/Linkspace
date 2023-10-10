@@ -49,7 +49,7 @@ const Login = () => {
           height: "89.3vh",
           justifyContent: "center",
           alignItems: "center",
-          bgcolor: "greenBackground.main",
+          bgcolor: "white",
         }}
       >
         <Paper

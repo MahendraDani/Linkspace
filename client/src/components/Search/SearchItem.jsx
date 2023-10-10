@@ -53,17 +53,17 @@ const SearchItem = ({ links, query, selectedFilter }) => {
     }
   });
 
-  // const searchedLinksByTags = links.filter((link) => {
-  //   if (
-  //     link.tags.forEach((tag) => {
-  //       if (tag.toLowerCase() === query.toLowerCase()) {
-  //         console.log(link);
-  //         return link;
-  //       }
-  //     })
-  //   )
-  //     return link;
-  // });
+  const searchedLinksByTags = links.filter((link) => {
+    if (
+      link.tags.forEach((tag) => {
+        if (tag.toLowerCase() === query.toLowerCase()) {
+          console.log(link);
+          return link;
+        }
+      })
+    )
+      return link;
+  });
 
   const searchByAll = links.filter((link) => {
     if (
@@ -90,7 +90,7 @@ const SearchItem = ({ links, query, selectedFilter }) => {
         ) : null}
       </Stack>
       <Stack>
-        {selectedFilter === "none" ? (
+        {selectedFilter === "none" || selectedFilter === "tags" ? (
           <SearchLinkItem searchedLinks={searchByAll} />
         ) : null}
       </Stack>

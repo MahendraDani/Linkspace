@@ -7,7 +7,7 @@ const Navbar = () => {
     <div>
       <Box
         sx={{
-          bgcolor: "greenBackground.main",
+          bgcolor: "white",
           p: 1,
           borderBottom: "1px solid",
           borderColor: "secondary.main",
@@ -23,7 +23,14 @@ const Navbar = () => {
           }}
         >
           <Link to={"/"}>
-            <Typography variant="h4">LinkSpace</Typography>
+            {/* <Typography variant="h4">LinkSpace</Typography> */}
+            <div class="bg-gradient-to-r from-gray-400 to-[#478564] bg-clip-text text-transparent">
+              <p class="text-4xl font-bold">
+                <Typography variant="h4" sx={{ fontWeight: "900" }}>
+                  LinkSpace
+                </Typography>
+              </p>
+            </div>
           </Link>
           <Box
             sx={{
@@ -38,11 +45,13 @@ const Navbar = () => {
                 variant="contained"
                 disableElevation
                 sx={{
-                  border: "2px solid #0D090A",
+                  p: 0.5,
+                  px: 1,
+                  border: "2px solid #424242",
                   bgcolor: "transparent",
                   color: "black",
                   ":hover": {
-                    bgcolor: "#0D090A",
+                    bgcolor: "#424242",
                     color: "white",
                   },
                 }}
@@ -55,9 +64,11 @@ const Navbar = () => {
                 variant="contained"
                 disableElevation
                 sx={{
+                  p: 0.5,
+                  px: 1,
                   border: "2px solid #0D090A",
-                  bgcolor: "transparent",
-                  color: "black",
+                  bgcolor: "#424242",
+                  color: "white",
                   ":hover": {
                     bgcolor: "#0D090A",
                     color: "white",
