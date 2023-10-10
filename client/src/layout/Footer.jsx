@@ -11,8 +11,7 @@ const Footer = () => {
           right: 0,
           bottom: 0,
           bgcolor: "white",
-          // borderTop: "1px solid ",
-          // borderColor: "secondary.main",
+          borderTopRightRadius: 10,
           p: 1,
         }}
       >
@@ -22,11 +21,11 @@ const Footer = () => {
               height: "3rem",
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
+              justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Typography variant="h6">Linkspace</Typography>
+            {/* <Typography variant="h6">Linkspace</Typography> */}
             <a href="https://github.com/MahendraDani/Linkspace" target="blank">
               Github
             </a>

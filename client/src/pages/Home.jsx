@@ -4,6 +4,7 @@ import Footer from "../layout/Footer";
 import { Typography, Box, Stack, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomePageTitle from "../layout/HomePageTitle";
+import { ArrowRightAltOutlined } from "@mui/icons-material";
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
       <Navbar />
       <Box
         sx={{
-          height: { md: "31.7rem", xs: "30.8rem" },
+          height: { md: "37.7rem", xs: "35.8rem" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -83,11 +84,12 @@ const Home = () => {
         <Box sx={{ pt: 3 }}>
           <Link to={"/signup"}>
             <Button
+              endIcon={<ArrowRightAltOutlined />}
               variant="contained"
               disableElevation
               sx={{
-                p: 0.5,
-                px: 1,
+                py: 1,
+                px: 3,
                 border: "2px solid #0D090A",
                 bgcolor: "#424242",
                 color: "white",
@@ -97,12 +99,12 @@ const Home = () => {
                 },
               }}
             >
-              Get Started
+              <Typography>Get Started</Typography>
             </Button>
           </Link>
         </Box>
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 };
