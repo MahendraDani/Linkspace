@@ -18,6 +18,7 @@ import {
   MoreVert,
 } from "@mui/icons-material";
 import axios from "axios";
+import UpdateLink from "../Form/updateLinkForm";
 
 const LinkTableItem = ({ link }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,6 +33,13 @@ const LinkTableItem = ({ link }) => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   const deleteLink = async (linkID) => {
     try {
@@ -44,6 +52,42 @@ const LinkTableItem = ({ link }) => {
         }
       );
       window.location = "/dashboard";
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const [selectedLink, setSelectedLink] = useState({});
+  const getSelectedLink = async (linkID) => {
+    try {
+      // const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `http://localhost:3000/api/users/links/${linkID}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      // console.log(response.data);
+      setSelectedLink(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const [tags, setTags] = useState([]);
+  const getTagsOfUsers = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
+          "userID"
+        )}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
+      setTags(response.data.tags);
     } catch (error) {
       console.log(error);
     }
@@ -137,7 +181,13 @@ const LinkTableItem = ({ link }) => {
           <Typography variant="body2">{link.createdOn}</Typography>
         </Box> */}
         <Box>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              getSelectedLink(link.linkID);
+              getTagsOfUsers();
+              handleOpenModal();
+            }}
+          >
             <EditOutlined
               fontSize="small"
               sx={{
@@ -146,6 +196,12 @@ const LinkTableItem = ({ link }) => {
               }}
             />
           </IconButton>
+          <UpdateLink
+            selectedLink={selectedLink}
+            showModal={showModal}
+            handleCloseModal={handleCloseModal}
+            userTags={tags}
+          />
         </Box>
         <Box>
           <IconButton
@@ -245,7 +301,12 @@ const LinkTableItem = ({ link }) => {
         >
           <Stack sx={{ p: 1.5, bgcolor: "secondary.main", gap: 1 }}>
             <Box>
-              <IconButton>
+              <IconButton
+                onClick={() => {
+                  getTagsOfUsers();
+                  handleOpenModal();
+                }}
+              >
                 <EditOutlined
                   fontSize="small"
                   sx={{
@@ -254,6 +315,12 @@ const LinkTableItem = ({ link }) => {
                   }}
                 />
               </IconButton>
+              <UpdateLink
+                selectedLink={selectedLink}
+                showModal={showModal}
+                handleCloseModal={handleCloseModal}
+                userTags={tags}
+              />
             </Box>
             <Box>
               <IconButton

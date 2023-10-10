@@ -20,7 +20,7 @@ const MenuProps = {
   },
 };
 
-const MulitInput = ({ handleChange, inputTags, userTags }) => {
+const MulitInput = ({ handleChange, inputTags, userTags, defaultValue }) => {
   const userTagNames = userTags.map((tag) => {
     return tag.tagName;
   });
