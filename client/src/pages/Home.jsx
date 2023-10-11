@@ -11,7 +11,6 @@ const Home = () => {
     // #F0FAF3
     <Box
       sx={{
-        bgcolor: "white",
         minHeight: "100vh",
         bgcolor: "greenBackground.main",
       }}
