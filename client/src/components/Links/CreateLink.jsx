@@ -12,6 +12,7 @@ import { Add } from "@mui/icons-material";
 import MulitInput from "../Form/MulitInput";
 import axios from "axios";
 import FormModal from "../../layout/modals/Form.modal";
+import FormInput from "../../layout/inputs/TextField.input";
 
 const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
   const [title, setTitle] = useState("");
@@ -55,25 +56,18 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
         <FormModal.Content>
           <Stack direction={"column"} gap={4}>
             <FormModal.Title>Save a new link</FormModal.Title>
-            <Box>
-              <TextField
-                color="gray"
-                variant="outlined"
-                label="Title"
-                sx={{ width: "100%" }}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </Box>
-            <Box>
-              <TextField
-                color="gray"
-                variant="outlined"
-                multiline
-                label="Link"
-                sx={{ width: "100%" }}
-                onChange={(e) => setLink(e.target.value)}
-              />
-            </Box>
+            <FormInput
+              label={"Title"}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+            <FormInput
+              label={"Link"}
+              onChange={(e) => {
+                setLink(e.target.value);
+              }}
+            />
             <Box>
               <MulitInput
                 handleChange={handleChange}
