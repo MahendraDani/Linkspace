@@ -115,11 +115,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// sx={{
-//   justifyContent: "center",
-//   alignItems: "center",
-//   flexDirection: "column",
-//   gap: 1,
-//   display: { xs: "none", md: "flex", lg: "none" },
-// }}

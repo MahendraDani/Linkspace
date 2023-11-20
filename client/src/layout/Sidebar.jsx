@@ -4,6 +4,7 @@ import CreateLink from "../components/Links/CreateLink";
 import CreateTag from "../components/Tags/CreateTag";
 import axios from "axios";
 import { AddLink, BookmarkAddOutlined } from "@mui/icons-material";
+import FormModal from "./modals/Form.modal";
 
 const Sidebar = ({
   handleOpenLinkTable,
@@ -78,6 +79,9 @@ const Sidebar = ({
             </Typography>
           </Box>
           <Stack gap={0.5}>
+            <Box>
+              <FormModal />
+            </Box>
             <Box>
               <Button
                 sx={buttonStyles}
