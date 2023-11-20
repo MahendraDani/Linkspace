@@ -12,7 +12,7 @@ import { Add } from "@mui/icons-material";
 import axios from "axios";
 import MulitInput from "./MulitInput";
 
-const UpdateLink = ({
+const UpdateLinkForm = ({
   selectedLink,
   showModal,
   handleCloseModal,
@@ -139,4 +139,4 @@ const UpdateLink = ({
   );
 };
 
-export default UpdateLink;
+export default UpdateLinkForm;

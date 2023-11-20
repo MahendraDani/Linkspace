@@ -19,7 +19,7 @@ import {
   MoreVert,
 } from "@mui/icons-material";
 import axios from "axios";
-import UpdateLink from "../Form/updateLinkForm";
+import UpdateLinkForm from "../Form/UpdateLinkForm";
 
 const LinkTableItem = ({ link }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -197,7 +197,7 @@ const LinkTableItem = ({ link }) => {
               }}
             />
           </IconButton>
-          <UpdateLink
+          <UpdateLinkForm
             selectedLink={selectedLink}
             showModal={showModal}
             handleCloseModal={handleCloseModal}
@@ -317,7 +317,7 @@ const LinkTableItem = ({ link }) => {
                   }}
                 />
               </IconButton>
-              <UpdateLink
+              <UpdateLinkForm
                 selectedLink={selectedLink}
                 showModal={showModal}
                 handleCloseModal={handleCloseModal}
