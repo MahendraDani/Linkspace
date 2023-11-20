@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import FormInput from "../layout/inputs/TextField.input";
 import PasswordField from "../layout/inputs/PasswordField.input";
+import { SignupUser } from "../services/auth/signup.service";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -13,28 +14,28 @@ const Signup = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/signup",
-        {
-          name: name,
-          email: email,
-          password: password,
-        }
-      );
-      const token = response.data.accessToken;
-      const userName = response.data.user.name;
-      const userID = response.data.user.userID;
-      localStorage.setItem("token", token);
-      localStorage.setItem("userID", userID);
-      localStorage.setItem("name", userName);
-      console.log(response);
-      navigate("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleSignup = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:3000/api/auth/signup",
+  //       {
+  //         name: name,
+  //         email: email,
+  //         password: password,
+  //       }
+  //     );
+  //     const token = response.data.accessToken;
+  //     const userName = response.data.user.name;
+  //     const userID = response.data.user.userID;
+  //     localStorage.setItem("token", token);
+  //     localStorage.setItem("userID", userID);
+  //     localStorage.setItem("name", userName);
+  //     console.log(response);
+  //     navigate("/dashboard");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <>
       <Navbar />
@@ -108,7 +109,10 @@ const Signup = () => {
                   color: "white",
                 },
               }}
-              onClick={handleSignup}
+              onClick={async () => {
+                await SignupUser({ name, email, password });
+                navigate("/dashboard");
+              }}
             >
               Sign Up
             </Button>

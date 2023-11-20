@@ -33,6 +33,7 @@ function stringToColor(string) {
 }
 
 const DashNavbar = () => {
+  const userName = localStorage.getItem("name");
   const handleLogout = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -43,14 +44,6 @@ const DashNavbar = () => {
     }
   };
 
-  function stringAvatar(name) {
-    return {
-      sx: {
-        bgcolor: stringToColor(name),
-      },
-      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-    };
-  }
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -148,7 +141,7 @@ const DashNavbar = () => {
             </Box>
             <Box>
               <IconButton onClick={handleClick}>
-                <Avatar {...stringAvatar(localStorage.getItem("name"))} />
+                <Avatar>{userName.split("")[0]}</Avatar>
               </IconButton>
               <Popover
                 open={open}
