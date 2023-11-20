@@ -11,6 +11,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
+import FormInput from "../layout/inputs/TextField.input";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -67,21 +68,22 @@ const Login = () => {
             <Box sx={{ mb: 2 }}>
               <Typography variant="h5">Login to your Account</Typography>
             </Box>
-            <TextField
-              color="gray"
-              sx={{ width: "100%" }}
-              label="Email"
-              variant="outlined"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              color="gray"
-              sx={{ width: "100%" }}
-              label="Password"
-              type="password"
-              variant="outlined"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Box width={"100%"}>
+              <FormInput
+                label={"Email"}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </Box>
+            <Box width={"100%"}>
+              <FormInput
+                label={"Password"}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </Box>
           </Stack>
           <Box
             sx={{
@@ -111,7 +113,6 @@ const Login = () => {
           </Box>
         </Paper>
       </Stack>
-      {/* <Footer /> */}
     </>
   );
 };

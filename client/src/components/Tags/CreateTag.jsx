@@ -1,15 +1,9 @@
 import { Add } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Fade,
-  Modal,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
+import FormModal from "../../layout/modals/Form.modal";
+import FormInput from "../../layout/inputs/TextField.input";
 
 const CreateTag = ({ showModal, handleCloseModal }) => {
   const [name, setName] = useState("");
@@ -37,79 +31,44 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
     }
   };
   return (
-    <Modal open={showModal} onClose={handleCloseModal}>
-      <Fade in={showModal}>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 400,
-            bgcolor: "secondary.main",
-            boxShadow: 16,
-            p: 4,
-          }}
-        >
-          <Stack direction={"column"} gap={4}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography variant="h5" fontWeight={500}>
-                Save a new tag
-              </Typography>
-            </Box>
-            <Box>
-              <TextField
-                color="gray"
-                variant="outlined"
-                label="Name"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                sx={{ width: "100%" }}
-              />
-            </Box>
-            <Box>
-              <TextField
-                color="gray"
-                variant="outlined"
-                multiline
-                onChange={(e) => {
-                  setPurpose(e.target.value);
-                }}
-                label="Purpose"
-                sx={{ width: "100%" }}
-              />
-            </Box>
-            <Box sx={{ textAlign: "center" }}>
-              {/* <Button
-                variant="outlined"
-                startIcon={<Add />}
-                onClick={handleCreateTag}
-              >
-                Create
-              </Button> */}
-              <Button
-                variant="contained"
-                disableElevation
-                startIcon={<Add />}
-                sx={{
-                  border: "1px solid #433C53",
-                  bgcolor: "transparent",
-                  color: "#433C53",
-                  ":hover": {
-                    bgcolor: "#393347",
-                    color: "white",
-                  },
-                }}
-                onClick={handleCreateTag}
-              >
-                Create
-              </Button>
-            </Box>
-          </Stack>
-        </Box>
-      </Fade>
-    </Modal>
+    <FormModal open={showModal} handleCloseModal={handleCloseModal}>
+      <FormModal.Content>
+        <Stack direction={"column"} gap={4}>
+          <FormModal.Title>Save a new tag</FormModal.Title>
+          <FormInput
+            label={"Name"}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <FormInput
+            label={"Purpose"}
+            onChange={(e) => {
+              setPurpose(e.target.value);
+            }}
+          />
+          <Box sx={{ textAlign: "center" }}>
+            <Button
+              variant="contained"
+              disableElevation
+              startIcon={<Add />}
+              sx={{
+                border: "1px solid #433C53",
+                bgcolor: "transparent",
+                color: "#433C53",
+                ":hover": {
+                  bgcolor: "#393347",
+                  color: "white",
+                },
+              }}
+              onClick={handleCreateTag}
+            >
+              Create
+            </Button>
+          </Box>
+        </Stack>
+      </FormModal.Content>
+    </FormModal>
   );
 };
 

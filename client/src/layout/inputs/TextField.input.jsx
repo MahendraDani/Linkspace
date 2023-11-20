@@ -1,7 +1,7 @@
 import { Box, TextField } from "@mui/material";
 import React from "react";
 
-const FormInput = ({ label, onChange }) => {
+const FormInput = ({ label, onChange, defaultValue }) => {
   return (
     <Box>
       <TextField
@@ -9,6 +9,7 @@ const FormInput = ({ label, onChange }) => {
         variant="outlined"
         label={label}
         sx={{ width: "100%" }}
+        defaultValue={defaultValue}
         onChange={onChange}
       />
     </Box>

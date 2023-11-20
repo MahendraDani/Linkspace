@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
+import FormInput from "../layout/inputs/TextField.input";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -70,28 +71,30 @@ const Signup = () => {
             <Box sx={{ mb: 2 }}>
               <Typography variant="h5">Create Account</Typography>
             </Box>
-            <TextField
-              color="gray"
-              sx={{ width: "100%", ":focus": { color: "red" } }}
-              label="Name"
-              variant="outlined"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <TextField
-              color="gray"
-              sx={{ width: "100%" }}
-              label="Email"
-              variant="outlined"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              color="gray"
-              sx={{ width: "100%" }}
-              label="Password"
-              type="password"
-              variant="outlined"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Box width="100%">
+              <FormInput
+                label={"Name"}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </Box>
+            <Box width="100%">
+              <FormInput
+                label={"Email"}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </Box>
+            <Box width="100%">
+              <FormInput
+                label={"Password"}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
+            </Box>
           </Stack>
           <Box
             sx={{
@@ -121,7 +124,6 @@ const Signup = () => {
           </Box>
         </Paper>
       </Stack>
-      {/* <Footer /> */}
     </>
   );
 };
