@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
 import FormInput from "../layout/inputs/TextField.input";
+import PasswordField from "../layout/inputs/PasswordField.input";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -77,7 +78,7 @@ const Login = () => {
               />
             </Box>
             <Box width={"100%"}>
-              <FormInput
+              <PasswordField
                 label={"Password"}
                 onChange={(e) => {
                   setPassword(e.target.value);

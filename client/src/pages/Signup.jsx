@@ -1,20 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import {
-  Box,
-  Button,
-  Card,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import Navbar from "../layout/Navbar";
-import Footer from "../layout/Footer";
 import FormInput from "../layout/inputs/TextField.input";
+import PasswordField from "../layout/inputs/PasswordField.input";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -88,7 +79,7 @@ const Signup = () => {
               />
             </Box>
             <Box width="100%">
-              <FormInput
+              <PasswordField
                 label={"Password"}
                 onChange={(e) => {
                   setPassword(e.target.value);
