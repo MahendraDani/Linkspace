@@ -4,7 +4,7 @@ export const LoginUser = async (credentials) => {
   let isError = false;
   try {
     const response = await axios.post(
-      "https://linkspace-api.vercel.app/api/auth/login",
+      `${import.meta.env.VITE_API_URL}/api/auth/login`,
       credentials
     );
     return { isError, response };
