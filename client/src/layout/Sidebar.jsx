@@ -75,7 +75,7 @@ const Sidebar = ({
         <Stack gap={2}>
           <Box>
             <Typography variant="h5" fontWeight={600} textAlign={"center"}>
-              Dashboarddd
+              Dashboard
             </Typography>
           </Box>
           <Stack gap={0.5}>
