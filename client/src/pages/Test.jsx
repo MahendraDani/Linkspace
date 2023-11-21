@@ -5,8 +5,7 @@ const Test = () => {
   const show = import.meta.env.VITE_BASE;
   return (
     <>
-      <div>{JSON.stringify(import.meta.env)}</div>
-      <div>{show}</div>
+      <div>{JSON.stringify(import.meta.env.VITE_FUN)}</div>
       <div>It mus workkkkkkk</div>
     </>
   );
