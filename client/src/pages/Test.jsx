@@ -3,7 +3,6 @@ import React from "react";
 const Test = () => {
   const mode = import.meta.env.PROD;
   const show = import.meta.env.VITE_BASE;
-  return <>{mode ? <div>{show}</div> : "Hellooo it didn't work"}</>;
+  return <div>{JSON.stringify(import.meta.env)}</div>;
 };
-
 export default Test;
