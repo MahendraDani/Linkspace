@@ -5,8 +5,10 @@ import { Typography, Box, Stack, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import HomePageTitle from "../layout/HomePageTitle";
 import { ArrowRightAltOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     // #F0FAF3
     <Box
@@ -108,7 +110,13 @@ const Home = () => {
             </Button>
           </Link>
         </Box>
-        <div>{import.meta.env.VITE_BASE}</div>
+        <Button
+          onClick={() => {
+            navigate("/test");
+          }}
+        >
+          Take me
+        </Button>
       </Box>
       {/* <Footer /> */}
     </Box>
