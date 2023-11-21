@@ -13,6 +13,7 @@ import Navbar from "../layout/Navbar";
 import Footer from "../layout/Footer";
 import FormInput from "../layout/inputs/TextField.input";
 import PasswordField from "../layout/inputs/PasswordField.input";
+import { LoginUser } from "../services/auth/login.service";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,21 +22,33 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
-      const token = response.data.accessToken;
-      const userName = response.data.user.name;
-      const userID = response.data.user.userID;
-      localStorage.setItem("token", token);
-      localStorage.setItem("userID", userID);
-      localStorage.setItem("name", userName);
-      if (token) {
+      const { isError, response } = await LoginUser({ email, password });
+      if (!isError) {
+        // TODO : Use cookies instead of localstorage
+        localStorage.setItem("token", response.data.accessToken);
+        localStorage.setItem("userID", response.data.user.userID);
+        localStorage.setItem("name", response.data.user.name);
         navigate("/dashboard");
+        return;
+      } else {
+        const error = await response;
+        const statusCode = error.response.status;
+        switch (statusCode) {
+          case 400:
+            alert(error.response.data.message);
+            window.location.reload();
+
+            break;
+          case 401:
+            alert(error.response.data.message);
+            window.location.reload();
+            break;
+          case 403:
+            alert(error.response.data.message);
+            window.location.reload();
+          default:
+            break;
+        }
       }
     } catch (error) {
       console.log(error);
@@ -107,7 +120,9 @@ const Login = () => {
                   color: "white",
                 },
               }}
-              onClick={handleLogin}
+              onClick={() => {
+                handleLogin();
+              }}
             >
               Login
             </Button>

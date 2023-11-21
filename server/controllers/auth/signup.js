@@ -31,7 +31,7 @@ const signup = async (req, res) => {
     });
     await user.save();
 
-    const token = await jwt.sign(
+    const token = jwt.sign(
       {
         userID: user.userID,
         name: user.name,

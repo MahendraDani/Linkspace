@@ -14,28 +14,40 @@ const Signup = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  // const handleSignup = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:3000/api/auth/signup",
-  //       {
-  //         name: name,
-  //         email: email,
-  //         password: password,
-  //       }
-  //     );
-  //     const token = response.data.accessToken;
-  //     const userName = response.data.user.name;
-  //     const userID = response.data.user.userID;
-  //     localStorage.setItem("token", token);
-  //     localStorage.setItem("userID", userID);
-  //     localStorage.setItem("name", userName);
-  //     console.log(response);
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleSignupUser = async () => {
+    try {
+      const { isError, response } = await SignupUser({ name, email, password });
+      if (!isError) {
+        // TODO : use cookies instead of local storage here using js-cookie library
+        localStorage.setItem("name", response.data.user.name);
+        localStorage.setItem("token", response.data.accessToken);
+        localStorage.setItem("userID", response.data.user.userID);
+        navigate("/dashboard");
+        return;
+      } else {
+        const error = await response;
+
+        const statusCode = error.response.status;
+
+        switch (statusCode) {
+          case 409:
+            alert(error.response.data.message);
+
+            //TODO : Use recoil to re-render the fields after the alert instead of refreshing the window
+            window.location.reload();
+            break;
+
+          case 400:
+            alert(error.response.data.message);
+            window.location.reload();
+          default:
+            break;
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -109,9 +121,8 @@ const Signup = () => {
                   color: "white",
                 },
               }}
-              onClick={async () => {
-                await SignupUser({ name, email, password });
-                navigate("/dashboard");
+              onClick={() => {
+                handleSignupUser();
               }}
             >
               Sign Up
