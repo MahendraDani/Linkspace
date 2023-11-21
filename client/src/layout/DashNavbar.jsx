@@ -13,7 +13,7 @@ import CreateLink from "../components/Links/CreateLink";
 import CreateTag from "../components/Tags/CreateTag";
 import Searchbar from "../components/Search/Searchbar";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 function stringToColor(string) {
   let hash = 0;
   let i;
@@ -40,6 +40,10 @@ const DashNavbar = () => {
       localStorage.removeItem("token");
       localStorage.removeItem("userID");
       localStorage.removeItem("name");
+
+      Cookies.remove("name");
+      Cookies.remove("userID");
+      Cookies.remove("token");
       window.location = "/";
     }
   };

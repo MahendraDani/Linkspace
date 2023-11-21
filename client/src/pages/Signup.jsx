@@ -7,6 +7,7 @@ import Navbar from "../layout/Navbar";
 import FormInput from "../layout/inputs/TextField.input";
 import PasswordField from "../layout/inputs/PasswordField.input";
 import { SignupUser } from "../services/auth/signup.service";
+import Cookies from "js-cookie";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +20,9 @@ const Signup = () => {
       const { isError, response } = await SignupUser({ name, email, password });
       if (!isError) {
         // TODO : use cookies instead of local storage here using js-cookie library
+        Cookies.set("name", response.data.user.name, { secure: true });
+        Cookies.set("token", response.data.accessToken, { secure: true });
+        Cookies.set("userID", response.data.user.userID, { secure: true });
         localStorage.setItem("name", response.data.user.name);
         localStorage.setItem("token", response.data.accessToken);
         localStorage.setItem("userID", response.data.user.userID);

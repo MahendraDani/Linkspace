@@ -14,6 +14,7 @@ import Footer from "../layout/Footer";
 import FormInput from "../layout/inputs/TextField.input";
 import PasswordField from "../layout/inputs/PasswordField.input";
 import { LoginUser } from "../services/auth/login.service";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,12 +25,14 @@ const Login = () => {
     try {
       const { isError, response } = await LoginUser({ email, password });
       if (!isError) {
+        Cookies.set("name", response.data.user.name, { secure: true });
+        Cookies.set("token", response.data.accessToken, { secure: true });
+        Cookies.set("userID", response.data.user.userID, { secure: true });
         // TODO : Use cookies instead of localstorage
         localStorage.setItem("token", response.data.accessToken);
         localStorage.setItem("userID", response.data.user.userID);
         localStorage.setItem("name", response.data.user.name);
         navigate("/dashboard");
-        return;
       } else {
         const error = await response;
         const statusCode = error.response.status;
