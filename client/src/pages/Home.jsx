@@ -104,7 +104,7 @@ const Home = () => {
                 },
               }}
             >
-              <Typography>Get Started</Typography>
+              <Typography>Get started</Typography>
             </Button>
           </Link>
         </Box>
