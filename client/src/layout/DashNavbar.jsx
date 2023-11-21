@@ -14,23 +14,9 @@ import CreateTag from "../components/Tags/CreateTag";
 import Searchbar from "../components/Search/Searchbar";
 import axios from "axios";
 import Cookies from "js-cookie";
-function stringToColor(string) {
-  let hash = 0;
-  let i;
-
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  let color = "#";
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.slice(-2);
-  }
-
-  return color;
-}
+import { useSetRecoilState } from "recoil";
+import { basicPopoverAnchorElState } from "../store/atoms/ui/popover/basicPopover.atom";
+import BasicPopover from "./Popovers/basic.popover";
 
 const DashNavbar = () => {
   const userName = localStorage.getItem("name");
@@ -48,28 +34,9 @@ const DashNavbar = () => {
     }
   };
 
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
-  //Menu
-  const [anchorEl2, setAnchorEl2] = useState(null);
-  const openMenu = Boolean(anchorEl2);
-  const handleMenuClick = (event) => {
-    setAnchorEl2(event.currentTarget);
-  };
-  const handleMenuClose = () => {
-    setAnchorEl2(null);
-  };
+  const setProfilePopoverAnchorEl = useSetRecoilState(
+    basicPopoverAnchorElState
+  );
 
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => {
@@ -144,19 +111,15 @@ const DashNavbar = () => {
               <Searchbar />
             </Box>
             <Box>
-              <IconButton onClick={handleClick}>
-                <Avatar>{userName.split("")[0]}</Avatar>
-              </IconButton>
-              <Popover
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
+              <IconButton
+                onClick={(e) => {
+                  setProfilePopoverAnchorEl(e.currentTarget);
                 }}
               >
-                <Stack p={2} sx={{ bgcolor: "secondary.main" }}>
+                <Avatar>{userName.split("")[0]}</Avatar>
+              </IconButton>
+              <BasicPopover>
+                <BasicPopover.Content>
                   <Button
                     variant="standard"
                     startIcon={<AddLink />}
@@ -191,8 +154,8 @@ const DashNavbar = () => {
                   >
                     Logout
                   </Button>
-                </Stack>
-              </Popover>
+                </BasicPopover.Content>
+              </BasicPopover>
             </Box>
           </Stack>
         </Stack>

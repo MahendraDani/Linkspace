@@ -5,20 +5,25 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import { Box } from "@mui/material";
+import Test from "./pages/Test";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
     <>
-      <Box>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
-        </BrowserRouter>
-      </Box>
+      <RecoilRoot>
+        <Box>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/test" element={<Test />} />
+            </Routes>
+          </BrowserRouter>
+        </Box>
+      </RecoilRoot>
     </>
   );
 }
