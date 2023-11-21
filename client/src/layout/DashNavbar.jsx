@@ -14,9 +14,6 @@ import CreateTag from "../components/Tags/CreateTag";
 import Searchbar from "../components/Search/Searchbar";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useSetRecoilState } from "recoil";
-import { basicPopoverAnchorElState } from "../store/atoms/ui/popover/basicPopover.atom";
-import BasicPopover from "./Popovers/basic.popover";
 
 const DashNavbar = () => {
   const userName = localStorage.getItem("name");
@@ -34,9 +31,18 @@ const DashNavbar = () => {
     }
   };
 
-  const setProfilePopoverAnchorEl = useSetRecoilState(
-    basicPopoverAnchorElState
-  );
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => {
@@ -111,15 +117,20 @@ const DashNavbar = () => {
               <Searchbar />
             </Box>
             <Box>
-              <IconButton
-                onClick={(e) => {
-                  setProfilePopoverAnchorEl(e.currentTarget);
-                }}
-              >
+              <IconButton onClick={handleClick}>
                 <Avatar>{userName.split("")[0]}</Avatar>
               </IconButton>
-              <BasicPopover>
-                <BasicPopover.Content>
+              {/* Hello */}
+              <Popover
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+              >
+                <Stack p={2} sx={{ bgcolor: "secondary.main" }}>
                   <Button
                     variant="standard"
                     startIcon={<AddLink />}
@@ -154,8 +165,8 @@ const DashNavbar = () => {
                   >
                     Logout
                   </Button>
-                </BasicPopover.Content>
-              </BasicPopover>
+                </Stack>
+              </Popover>
             </Box>
           </Stack>
         </Stack>
