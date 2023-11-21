@@ -7,6 +7,7 @@ const Test = () => {
     <>
       <div>{JSON.stringify(import.meta.env)}</div>
       <div>{show}</div>
+      <div>It mus work</div>
     </>
   );
 };
