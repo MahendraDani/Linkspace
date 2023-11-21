@@ -108,6 +108,7 @@ const Home = () => {
             </Button>
           </Link>
         </Box>
+        <div>{import.meta.env.VITE_BASE}</div>
       </Box>
       {/* <Footer /> */}
     </Box>
