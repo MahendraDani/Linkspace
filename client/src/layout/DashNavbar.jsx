@@ -14,6 +14,7 @@ import CreateTag from "../components/Tags/CreateTag";
 import Searchbar from "../components/Search/Searchbar";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { apiUrl } from "../config/apiEndpoints";
 
 const DashNavbar = () => {
   const userName = localStorage.getItem("name");
@@ -64,9 +65,7 @@ const DashNavbar = () => {
   const getTagsOfUsers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

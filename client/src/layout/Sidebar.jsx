@@ -5,6 +5,7 @@ import CreateTag from "../components/Tags/CreateTag";
 import axios from "axios";
 import { AddLink, BookmarkAddOutlined } from "@mui/icons-material";
 import FormModal from "./modals/Form.modal";
+import { apiUrl } from "../config/apiEndpoints";
 
 const Sidebar = ({
   handleOpenLinkTable,
@@ -32,9 +33,7 @@ const Sidebar = ({
   const getTagsOfUsers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

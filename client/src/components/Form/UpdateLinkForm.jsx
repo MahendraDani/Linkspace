@@ -13,6 +13,7 @@ import axios from "axios";
 import MulitInput from "./MulitInput";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const UpdateLinkForm = ({
   selectedLink,
@@ -36,7 +37,7 @@ const UpdateLinkForm = ({
   const handleUpdateLink = async (linkID) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/users/links/update/${linkID}`,
+        `${apiUrl}/api/users/links/update/${linkID}`,
         {
           url: newLinkUrl,
           title: newTitle,
