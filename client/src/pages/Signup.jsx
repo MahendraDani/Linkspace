@@ -38,12 +38,12 @@ const Signup = () => {
             alert(error.response.data.message);
 
             //TODO : Use recoil to re-render the fields after the alert instead of refreshing the window
-            window.location.reload();
+            navigate(0);
             break;
 
           case 400:
             alert(error.response.data.message);
-            window.location.reload();
+            navigate(0);
           default:
             break;
         }

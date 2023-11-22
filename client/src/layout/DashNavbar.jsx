@@ -15,9 +15,11 @@ import Searchbar from "../components/Search/Searchbar";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { apiUrl } from "../config/apiEndpoints";
+import { useNavigate } from "react-router-dom";
 
 const DashNavbar = () => {
   const userName = localStorage.getItem("name");
+  const navigate = useNavigate();
   const handleLogout = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -28,7 +30,7 @@ const DashNavbar = () => {
       Cookies.remove("name");
       Cookies.remove("userID");
       Cookies.remove("token");
-      window.location = "/";
+      navigate("/");
     }
   };
 

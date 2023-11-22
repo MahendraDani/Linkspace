@@ -11,8 +11,10 @@ import {
 import axios from "axios";
 import React from "react";
 import { apiUrl } from "../../config/apiEndpoints";
+import { useNavigate } from "react-router-dom";
 
 const TagTableItem = ({ tag }) => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -36,7 +38,7 @@ const TagTableItem = ({ tag }) => {
         }
       );
 
-      window.location = "/dashboard";
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

@@ -5,10 +5,12 @@ import React, { useState } from "react";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
 import { apiUrl } from "../../config/apiEndpoints";
+import { useNavigate } from "react-router-dom";
 
 const CreateTag = ({ showModal, handleCloseModal }) => {
   const [name, setName] = useState("");
   const [purpose, setPurpose] = useState("");
+  const navigate = useNavigate();
   const handleCreateTag = async () => {
     try {
       const response = await axios.post(
@@ -23,8 +25,7 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
           },
         }
       );
-      console.log(response);
-      window.location = "/dashboard";
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

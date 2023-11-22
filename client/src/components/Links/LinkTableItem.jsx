@@ -21,9 +21,11 @@ import {
 import axios from "axios";
 import UpdateLinkForm from "../Form/UpdateLinkForm";
 import { apiUrl } from "../../config/apiEndpoints";
+import { useNavigate } from "react-router-dom";
 
 const LinkTableItem = ({ link }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,7 +55,7 @@ const LinkTableItem = ({ link }) => {
           },
         }
       );
-      window.location = "/dashboard";
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

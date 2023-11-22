@@ -14,11 +14,13 @@ import axios from "axios";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
 import { apiUrl } from "../../config/apiEndpoints";
+import { useNavigate } from "react-router-dom";
 
 const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [inputTags, setInputTagss] = useState([]);
+  const navigate = useNavigate();
 
   const handleCreateLink = async () => {
     try {
@@ -36,7 +38,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
         }
       );
       handleCloseModal();
-      window.location = "/dashboard";
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

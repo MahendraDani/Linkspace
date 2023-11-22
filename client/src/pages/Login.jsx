@@ -39,16 +39,16 @@ const Login = () => {
         switch (statusCode) {
           case 400:
             alert(error.response.data.message);
-            window.location.reload();
+            navigate(0);
 
             break;
           case 401:
             alert(error.response.data.message);
-            window.location.reload();
+            navigate(0);
             break;
           case 403:
             alert(error.response.data.message);
-            window.location.reload();
+            navigate(0);
           default:
             break;
         }

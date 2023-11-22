@@ -14,6 +14,7 @@ import MulitInput from "./MulitInput";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
 import { apiUrl } from "../../config/apiEndpoints";
+import { useNavigate } from "react-router-dom";
 
 const UpdateLinkForm = ({
   selectedLink,
@@ -22,6 +23,7 @@ const UpdateLinkForm = ({
   userTags,
 }) => {
   const [inputTags, setInputTagss] = useState([]);
+  const navigate = useNavigate();
   const handleChange = (event) => {
     const {
       target: { value },
@@ -49,8 +51,7 @@ const UpdateLinkForm = ({
           },
         }
       );
-      console.log(response);
-      window.location = "/dashboard";
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
