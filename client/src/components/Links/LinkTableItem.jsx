@@ -20,6 +20,7 @@ import {
 } from "@mui/icons-material";
 import axios from "axios";
 import UpdateLinkForm from "../Form/UpdateLinkForm";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const LinkTableItem = ({ link }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -45,7 +46,7 @@ const LinkTableItem = ({ link }) => {
   const deleteLink = async (linkID) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/users/links/delete/${linkID}`,
+        `${apiUrl}/api/users/links/delete/${linkID}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),
@@ -61,14 +62,11 @@ const LinkTableItem = ({ link }) => {
   const getSelectedLink = async (linkID) => {
     try {
       // const token = localStorage.getItem("token");
-      const response = await axios.get(
-        `http://localhost:3000/api/users/links/${linkID}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
-      );
+      const response = await axios.get(`${apiUrl}/api/users/links/${linkID}`, {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      });
       // console.log(response.data);
       setSelectedLink(response.data);
     } catch (error) {
@@ -79,9 +77,7 @@ const LinkTableItem = ({ link }) => {
   const getTagsOfUsers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

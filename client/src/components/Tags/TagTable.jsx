@@ -2,15 +2,14 @@ import { Box, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TagTableItem from "./TagTableItem";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const TagTable = () => {
   const [tags, setTags] = useState([]);
   const getTagsOfUsers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/tags/all/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React from "react";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const TagTableItem = ({ tag }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,7 +28,7 @@ const TagTableItem = ({ tag }) => {
   const deleteTag = async (tagID) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/users/tags/delete/${tagID}`,
+        `${apiUrl}/api/users/tags/delete/${tagID}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

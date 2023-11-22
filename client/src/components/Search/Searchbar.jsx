@@ -23,6 +23,7 @@ import {
 } from "@mui/icons-material";
 import axios from "axios";
 import SearchItem from "./SearchItem";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const Searchbar = () => {
   const [links, setLinks] = useState([]);
@@ -36,7 +37,7 @@ const Searchbar = () => {
       const userID = localStorage.getItem("userID");
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:3000/api/users/search/links/${userID}`,
+        `${apiUrl}/api/users/search/links/${userID}`,
         {
           tagName: "mathematics",
           headers: {
@@ -56,9 +57,7 @@ const Searchbar = () => {
   const getLinksOfUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/links/all/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/links/all/${localStorage.getItem("userID")}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

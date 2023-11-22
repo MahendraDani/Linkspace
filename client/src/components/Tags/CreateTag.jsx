@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const CreateTag = ({ showModal, handleCloseModal }) => {
   const [name, setName] = useState("");
@@ -11,9 +12,7 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
   const handleCreateTag = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/users/tags/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/tags/${localStorage.getItem("userID")}`,
         {
           name: name,
           purpose: purpose,

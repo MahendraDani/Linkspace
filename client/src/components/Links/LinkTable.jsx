@@ -2,6 +2,7 @@ import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import LinkTableItem from "./LinkTableItem";
 import axios from "axios";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const LinkTable = () => {
   const [links, setLinks] = useState([]);
@@ -9,9 +10,7 @@ const LinkTable = () => {
   const getLinksOfUser = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/users/links/all/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/links/all/${localStorage.getItem("userID")}`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

@@ -13,6 +13,7 @@ import MulitInput from "../Form/MulitInput";
 import axios from "axios";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
+import { apiUrl } from "../../config/apiEndpoints";
 
 const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
   const [title, setTitle] = useState("");
@@ -22,9 +23,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
   const handleCreateLink = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/users/links/${localStorage.getItem(
-          "userID"
-        )}`,
+        `${apiUrl}/api/users/links/${localStorage.getItem("userID")}`,
         {
           title: title,
           link: link,
