@@ -8,7 +8,10 @@ const apiUrl =
 export const LoginUser = async (credentials) => {
   let isError = false;
   try {
-    const response = await axios.post(`${apiUrl}/api/auth/login`, credentials);
+    const response = await axios.post(
+      `https://linkspace-api.vercel.app/api/auth/login`,
+      credentials
+    );
     return { isError, response };
   } catch (error) {
     isError = true;
