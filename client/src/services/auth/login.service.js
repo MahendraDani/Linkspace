@@ -2,8 +2,8 @@ import axios from "axios";
 
 const apiUrl =
   import.meta.env.VITE_VERCEL_ENV === "production"
-    ? "https://linkspace-api.vercel.app"
-    : "http://localhost:3000";
+    ? import.meta.env.VITE_API_URL
+    : import.meta.env.VITE_API_URL;
 
 export const LoginUser = async (credentials) => {
   let isError = false;
