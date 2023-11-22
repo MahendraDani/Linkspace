@@ -1,12 +1,14 @@
 import axios from "axios";
 
+const apiUrl =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_DEV_API_URL
+    : import.meta.env.VITE_PROD_API_URL;
+
 export const LoginUser = async (credentials) => {
   let isError = false;
   try {
-    const response = await axios.post(
-      `http://localhost:3000/api/auth/login`,
-      credentials
-    );
+    const response = await axios.post(`${apiUrl}/api/auth/login`, credentials);
     return { isError, response };
   } catch (error) {
     isError = true;
