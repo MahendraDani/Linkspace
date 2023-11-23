@@ -6,6 +6,7 @@ import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
 import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
+import { createTagService } from "../../services/tags/createTag.service";
 
 const CreateTag = ({ showModal, handleCloseModal }) => {
   const [name, setName] = useState("");
@@ -13,20 +14,17 @@ const CreateTag = ({ showModal, handleCloseModal }) => {
   const navigate = useNavigate();
   const handleCreateTag = async () => {
     try {
-      const response = await axios.post(
-        `${apiUrl}/api/users/tags/${localStorage.getItem("userID")}`,
-        {
-          name: name,
-          purpose: purpose,
-        },
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await createTagService(
+        { name, purpose },
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-      navigate(0);
-      navigate("/dashboard");
+      if (!isError) {
+        navigate(0);
+        navigate("/dashboard");
+      } else {
+        console.log("some error in create tag service");
+      }
     } catch (error) {
       console.log(error);
     }

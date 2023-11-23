@@ -12,6 +12,7 @@ import axios from "axios";
 import React from "react";
 import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
+import { deleteTagService } from "../../services/tags/deleteTag.service";
 
 const TagTableItem = ({ tag }) => {
   const navigate = useNavigate();
@@ -29,16 +30,16 @@ const TagTableItem = ({ tag }) => {
 
   const deleteTag = async (tagID) => {
     try {
-      const response = await axios.delete(
-        `${apiUrl}/api/users/tags/delete/${tagID}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await deleteTagService(
+        tagID,
+        localStorage.getItem("token")
       );
-      navigate(0);
-      navigate("/dashboard");
+      if (!isError) {
+        navigate(0);
+        navigate("/dashboard");
+      } else {
+        console.log("some error in delete tag service");
+      }
     } catch (error) {
       console.log(error);
     }

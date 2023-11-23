@@ -3,21 +3,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TagTableItem from "./TagTableItem";
 import { apiUrl } from "../../config/apiEndpoints";
+import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
 
 const TagTable = () => {
   const [tags, setTags] = useState([]);
   const getTagsOfUsers = async () => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await getAllTagsOfUsersService(
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-
-      setTags(response.data.tags.reverse());
+      if (!isError) {
+        setTags(response.data.tags.reverse());
+      } else {
+        console.log("some error in get all tags of user");
+      }
     } catch (error) {
       console.log(error);
     }

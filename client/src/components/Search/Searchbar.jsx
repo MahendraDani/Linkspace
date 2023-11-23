@@ -24,6 +24,7 @@ import {
 import axios from "axios";
 import SearchItem from "./SearchItem";
 import { apiUrl } from "../../config/apiEndpoints";
+import { getAllLinksOfUser } from "../../services/links/getAllLinksofUser.service";
 
 const Searchbar = () => {
   const [links, setLinks] = useState([]);
@@ -31,41 +32,41 @@ const Searchbar = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [query, setQuery] = useState("");
-  const [tagName, setTagName] = useState("");
-  const findLinksByTagName = async () => {
-    try {
-      const userID = localStorage.getItem("userID");
-      const token = localStorage.getItem("token");
-      const response = await axios.get(
-        `${apiUrl}/api/users/search/links/${userID}`,
-        {
-          tagName: "mathematics",
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const [tagName, setTagName] = useState("");
+  // const findLinksByTagName = async () => {
+  //   try {
+  //     const userID = localStorage.getItem("userID");
+  //     const token = localStorage.getItem("token");
+  //     const response = await axios.get(
+  //       `${apiUrl}/api/users/search/links/${userID}`,
+  //       {
+  //         tagName: "mathematics",
+  //         headers: {
+  //           authorization: token,
+  //         },
+  //       }
+  //     );
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const toggleSearchBar = () => {
     setOpen(!open);
   };
   const getLinksOfUser = async () => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/api/users/links/all/${localStorage.getItem("userID")}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await getAllLinksOfUser(
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-      const userLinks = response.data;
-      setLinks(userLinks.reverse());
+      if (!isError) {
+        const userLinks = response.data;
+        setLinks(userLinks.reverse());
+      } else {
+        console.log("some error in get all links of user");
+      }
     } catch (error) {
       console.log(error);
     }

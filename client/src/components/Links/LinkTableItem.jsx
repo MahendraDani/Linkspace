@@ -22,6 +22,8 @@ import axios from "axios";
 import UpdateLinkForm from "../Form/UpdateLinkForm";
 import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
+import { deleteLinkService } from "../../services/links/deleteLink.service";
+import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
 
 const LinkTableItem = ({ link }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,16 +49,16 @@ const LinkTableItem = ({ link }) => {
 
   const deleteLink = async (linkID) => {
     try {
-      const response = await axios.delete(
-        `${apiUrl}/api/users/links/delete/${linkID}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await deleteLinkService(
+        linkID,
+        localStorage.getItem("token")
       );
-      navigate(0);
-      navigate("/dashboard");
+      if (!isError) {
+        navigate(0);
+        navigate("/dashboard");
+      } else {
+        console.log("Some error occurred in delete link service");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -79,15 +81,15 @@ const LinkTableItem = ({ link }) => {
   const [tags, setTags] = useState([]);
   const getTagsOfUsers = async () => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await getAllTagsOfUsersService(
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-      setTags(response.data.tags);
+      if (!isError) {
+        setTags(response.data.tags);
+      } else {
+        console.log("some error in get all tags of user service");
+      }
     } catch (error) {
       console.log(error);
     }

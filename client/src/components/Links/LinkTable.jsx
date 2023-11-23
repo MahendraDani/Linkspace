@@ -3,22 +3,24 @@ import React, { useEffect, useState } from "react";
 import LinkTableItem from "./LinkTableItem";
 import axios from "axios";
 import { apiUrl } from "../../config/apiEndpoints";
+import { getAllLinksOfUser } from "../../services/links/getAllLinksofUser.service";
 
 const LinkTable = () => {
   const [links, setLinks] = useState([]);
 
   const getLinksOfUser = async () => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/api/users/links/all/${localStorage.getItem("userID")}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await getAllLinksOfUser(
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-      const userLinks = response.data;
-      setLinks(userLinks.reverse());
+      if (!isError) {
+        const userLinks = response.data;
+        setLinks(userLinks.reverse());
+        console.log(response);
+      } else {
+        console.log("Some error in get all links of user service");
+      }
     } catch (error) {
       console.log(error);
     }

@@ -19,7 +19,7 @@ const createLink = async (req, res) => {
     const { link, title, tags } = req.body;
     if (!link || !title || !tags) {
       res
-        .status(statusCodes.BAD_REQUEST)
+        .status(statusCodes.UNAUTHORIZED)
         .json({ message: "All fields are required" });
       return;
     }

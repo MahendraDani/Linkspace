@@ -15,6 +15,7 @@ import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
 import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
+import { CreateLinkService } from "../../services/links/createLink.service";
 
 const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
   const [title, setTitle] = useState("");
@@ -24,22 +25,19 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
 
   const handleCreateLink = async () => {
     try {
-      const response = await axios.post(
-        `${apiUrl}/api/users/links/${localStorage.getItem("userID")}`,
-        {
-          title: title,
-          link: link,
-          tags: inputTags,
-        },
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await CreateLinkService(
+        { title, link, tags: inputTags },
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-      handleCloseModal();
-      navigate(0);
-      navigate("https://linkspace-eta.vercel.app/dashboard");
+      if (!isError) {
+        handleCloseModal();
+        navigate(0);
+        navigate("/dashboard");
+        return;
+      } else {
+        console.log("Some error occured");
+      }
     } catch (error) {
       console.log(error);
     }
