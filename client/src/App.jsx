@@ -6,7 +6,6 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import { Box } from "@mui/material";
 import { RecoilRoot } from "recoil";
-import Test from "./pages/Test";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/test" element={<Test />} />
             </Routes>
           </BrowserRouter>
         </Box>

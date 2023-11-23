@@ -37,7 +37,7 @@ const TagTableItem = ({ tag }) => {
           },
         }
       );
-
+      navigate(0);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);

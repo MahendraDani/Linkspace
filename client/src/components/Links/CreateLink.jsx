@@ -38,6 +38,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
         }
       );
       handleCloseModal();
+      navigate(0);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);

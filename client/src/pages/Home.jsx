@@ -110,13 +110,6 @@ const Home = () => {
             </Button>
           </Link>
         </Box>
-        <Button
-          onClick={() => {
-            navigate("/test");
-          }}
-        >
-          Take me
-        </Button>
       </Box>
       {/* <Footer /> */}
     </Box>
