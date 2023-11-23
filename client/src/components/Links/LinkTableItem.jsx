@@ -6,11 +6,9 @@ import {
   IconButton,
   Link,
   Modal,
-  Paper,
   Popover,
   Stack,
   Typography,
-  Skeleton,
 } from "@mui/material";
 import {
   EditOutlined,
@@ -18,12 +16,11 @@ import {
   OpenInNew,
   MoreVert,
 } from "@mui/icons-material";
-import axios from "axios";
 import UpdateLinkForm from "../Form/UpdateLinkForm";
-import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
 import { deleteLinkService } from "../../services/links/deleteLink.service";
 import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
+import { getLinkByIdService } from "../../services/links/getLinkById.service";
 
 const LinkTableItem = ({ link }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -67,13 +64,20 @@ const LinkTableItem = ({ link }) => {
   const getSelectedLink = async (linkID) => {
     try {
       // const token = localStorage.getItem("token");
-      const response = await axios.get(`${apiUrl}/api/users/links/${linkID}`, {
-        headers: {
-          authorization: localStorage.getItem("token"),
-        },
-      });
-      // console.log(response.data);
-      setSelectedLink(response.data);
+      // const response = await axios.get(`${apiUrl}/api/users/links/${linkID}`, {
+      //   headers: {
+      //     authorization: localStorage.getItem("token"),
+      //   },
+      // });
+      const { isError, response } = await getLinkByIdService(
+        linkID,
+        localStorage.getItem("token")
+      );
+      if (!isError) {
+        setSelectedLink(response.data);
+      } else {
+        console.log("some error in get link by id");
+      }
     } catch (error) {
       console.log(error);
     }

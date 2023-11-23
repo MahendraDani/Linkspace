@@ -1,16 +1,6 @@
-import { Delete, Edit, MoreVert, OpenInNew } from "@mui/icons-material";
-import {
-  Alert,
-  Box,
-  IconButton,
-  Modal,
-  Popover,
-  Stack,
-  Typography,
-} from "@mui/material";
-import axios from "axios";
+import { Delete, Edit, MoreVert } from "@mui/icons-material";
+import { Box, IconButton, Popover, Stack, Typography } from "@mui/material";
 import React from "react";
-import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
 import { deleteTagService } from "../../services/tags/deleteTag.service";
 

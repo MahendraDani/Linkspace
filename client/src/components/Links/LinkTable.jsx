@@ -1,8 +1,6 @@
-import { Box, Button, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import LinkTableItem from "./LinkTableItem";
-import axios from "axios";
-import { apiUrl } from "../../config/apiEndpoints";
 import { getAllLinksOfUser } from "../../services/links/getAllLinksofUser.service";
 
 const LinkTable = () => {
@@ -17,7 +15,6 @@ const LinkTable = () => {
       if (!isError) {
         const userLinks = response.data;
         setLinks(userLinks.reverse());
-        console.log(response);
       } else {
         console.log("Some error in get all links of user service");
       }

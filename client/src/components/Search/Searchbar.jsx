@@ -2,8 +2,6 @@ import {
   Box,
   Button,
   IconButton,
-  Menu,
-  MenuItem,
   Modal,
   Popover,
   Stack,
@@ -14,16 +12,12 @@ import {
   Search,
   ArrowBackOutlined,
   FilterAltOutlined,
-  AddLink,
-  BookmarkAddOutlined,
   Title,
   CloseOutlined,
   LinkOutlined,
   BookmarkBorderOutlined,
 } from "@mui/icons-material";
-import axios from "axios";
 import SearchItem from "./SearchItem";
-import { apiUrl } from "../../config/apiEndpoints";
 import { getAllLinksOfUser } from "../../services/links/getAllLinksofUser.service";
 
 const Searchbar = () => {

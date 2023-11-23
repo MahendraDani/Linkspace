@@ -1,8 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TagTableItem from "./TagTableItem";
-import { apiUrl } from "../../config/apiEndpoints";
 import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
 
 const TagTable = () => {

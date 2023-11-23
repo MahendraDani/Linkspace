@@ -1,5 +1,4 @@
 import { Stack } from "@mui/material";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchLinkItem from "./SearchLinkItem";
 

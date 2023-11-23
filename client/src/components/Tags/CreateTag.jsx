@@ -1,10 +1,8 @@
 import { Add } from "@mui/icons-material";
-import { Box, Button, Stack, TextField } from "@mui/material";
-import axios from "axios";
+import { Box, Button, Stack } from "@mui/material";
 import React, { useState } from "react";
 import FormModal from "../../layout/modals/Form.modal";
 import FormInput from "../../layout/inputs/TextField.input";
-import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
 import { createTagService } from "../../services/tags/createTag.service";
 

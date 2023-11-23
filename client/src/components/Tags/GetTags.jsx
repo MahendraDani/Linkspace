@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Box, Button } from "@mui/material";
-import { apiUrl } from "../../config/apiEndpoints";
 import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
 
 const GetTags = () => {
