@@ -4,7 +4,7 @@ const Test = () => {
   return (
     <>
       <div>Hello</div>
-      <div>{JSON.stringify(import.meta.env)}</div>
+      <div>{import.meta.env.VITE_TEST}</div>
     </>
   );
 };
