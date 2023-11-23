@@ -39,7 +39,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
       );
       handleCloseModal();
       navigate(0);
-      navigate("/dashboard");
+      navigate("https://linkspace-eta.vercel.app/dashboard");
     } catch (error) {
       console.log(error);
     }
