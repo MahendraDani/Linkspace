@@ -30,23 +30,6 @@ const Sidebar = ({
     setShowTagModal(false);
   };
 
-  const [tags, setTags] = useState([]);
-  const getTagsOfUsers = async () => {
-    try {
-      const { isError, response } = await getAllTagsOfUsersService(
-        localStorage.getItem("userID"),
-        localStorage.getItem("token")
-      );
-      if (!isError) {
-        setTags(response.data.tags);
-      } else {
-        console.log("some error in get all tags service");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const buttonStyles = {
     textTransform: "none",
     minWidth: { lg: "12rem", md: "10rem" },
@@ -88,7 +71,6 @@ const Sidebar = ({
                 startIcon={<AddLink />}
                 variant="standard"
                 onClick={() => {
-                  getTagsOfUsers();
                   handleOpenModal();
                 }}
               >
@@ -97,7 +79,6 @@ const Sidebar = ({
               <CreateLink
                 showModal={showModal}
                 handleCloseModal={handleCloseModal}
-                userTags={tags}
               />
             </Box>
             <Box>

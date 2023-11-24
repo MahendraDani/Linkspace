@@ -7,7 +7,7 @@ import FormInput from "../../layout/inputs/TextField.input";
 import { useNavigate } from "react-router-dom";
 import { CreateLinkService } from "../../services/links/createLink.service";
 
-const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
+const CreateLink = ({ showModal, handleCloseModal }) => {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [inputTags, setInputTagss] = useState([]);
@@ -59,11 +59,7 @@ const CreateLink = ({ showModal, handleCloseModal, userTags }) => {
               }}
             />
             <Box>
-              <MulitInput
-                handleChange={handleChange}
-                inputTags={inputTags}
-                userTags={userTags}
-              />
+              <MulitInput handleChange={handleChange} inputTags={inputTags} />
             </Box>
             <Box sx={{ textAlign: "center" }}>
               <Button

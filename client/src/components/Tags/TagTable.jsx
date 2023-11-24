@@ -2,9 +2,12 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import TagTableItem from "./TagTableItem";
 import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { TagsState } from "../../store/atoms/tag.atom";
 
 const TagTable = () => {
-  const [tags, setTags] = useState([]);
+  const tags = useRecoilValue(TagsState);
+  const setTags = useSetRecoilState(TagsState);
   const getTagsOfUsers = async () => {
     try {
       const { isError, response } = await getAllTagsOfUsersService(

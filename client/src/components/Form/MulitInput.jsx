@@ -8,6 +8,8 @@ import {
   Select,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { TagsState } from "../../store/atoms/tag.atom";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -20,7 +22,8 @@ const MenuProps = {
   },
 };
 
-const MulitInput = ({ handleChange, inputTags, userTags, defaultValue }) => {
+const MulitInput = ({ handleChange, inputTags, defaultValue }) => {
+  const userTags = useRecoilValue(TagsState);
   const userTagNames = userTags.map((tag) => {
     return tag.tagName;
   });

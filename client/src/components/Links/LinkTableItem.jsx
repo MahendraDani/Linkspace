@@ -76,22 +76,7 @@ const LinkTableItem = ({ link }) => {
       console.log(error);
     }
   };
-  const [tags, setTags] = useState([]);
-  const getTagsOfUsers = async () => {
-    try {
-      const { isError, response } = await getAllTagsOfUsersService(
-        localStorage.getItem("userID"),
-        localStorage.getItem("token")
-      );
-      if (!isError) {
-        setTags(response.data.tags);
-      } else {
-        console.log("some error in get all tags of user service");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   const [openWarning, setOpenWarning] = useState(false);
   const handleOpenWarning = () => setOpenWarning(true);
   const handleCloseWarning = () => setOpenWarning(false);
@@ -184,7 +169,6 @@ const LinkTableItem = ({ link }) => {
           <IconButton
             onClick={() => {
               getSelectedLink(link.linkID);
-              getTagsOfUsers();
               handleOpenModal();
             }}
           >
@@ -200,7 +184,6 @@ const LinkTableItem = ({ link }) => {
             selectedLink={selectedLink}
             showModal={showModal}
             handleCloseModal={handleCloseModal}
-            userTags={tags}
           />
         </Box>
         <Box>
@@ -304,7 +287,6 @@ const LinkTableItem = ({ link }) => {
               <IconButton
                 onClick={() => {
                   getSelectedLink(link.linkID);
-                  getTagsOfUsers();
                   handleOpenModal();
                 }}
               >
@@ -320,7 +302,7 @@ const LinkTableItem = ({ link }) => {
                 selectedLink={selectedLink}
                 showModal={showModal}
                 handleCloseModal={handleCloseModal}
-                userTags={tags}
+                // userTags={tags}
               />
             </Box>
             <Box>

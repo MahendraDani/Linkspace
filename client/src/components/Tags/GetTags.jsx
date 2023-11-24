@@ -25,7 +25,12 @@ const GetTags = () => {
   };
   return (
     <>
-      <Button onClick={getTagsOfUsers} variant="outlined">
+      <Button
+        onClick={() => {
+          getTagsOfUsers();
+        }}
+        variant="outlined"
+      >
         Get Tags
       </Button>
       <div>

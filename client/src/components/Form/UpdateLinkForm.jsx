@@ -16,12 +16,7 @@ import FormInput from "../../layout/inputs/TextField.input";
 import { apiUrl } from "../../config/apiEndpoints";
 import { useNavigate } from "react-router-dom";
 
-const UpdateLinkForm = ({
-  selectedLink,
-  showModal,
-  handleCloseModal,
-  userTags,
-}) => {
+const UpdateLinkForm = ({ selectedLink, showModal, handleCloseModal }) => {
   const [inputTags, setInputTagss] = useState([]);
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -82,11 +77,7 @@ const UpdateLinkForm = ({
               onChange={(e) => setNewLinkUrl(e.target.value)}
             />
             <Box>
-              <MulitInput
-                handleChange={handleChange}
-                inputTags={inputTags}
-                userTags={userTags}
-              />
+              <MulitInput handleChange={handleChange} inputTags={inputTags} />
             </Box>
             <Box sx={{ textAlign: "center" }}>
               <Button

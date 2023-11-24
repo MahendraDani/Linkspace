@@ -63,25 +63,6 @@ const DashNavbar = () => {
   const handleOpenCreateTagModal = () => {
     setShowCreateTagModal(true);
   };
-  const [tags, setTags] = useState([]);
-  const getTagsOfUsers = async () => {
-    try {
-      const response = await axios.get(
-        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
-      );
-      setTags(response.data.tags);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getTagsOfUsers();
-  }, []);
   return (
     // #43C76A
     <Box
@@ -144,7 +125,6 @@ const DashNavbar = () => {
                   <CreateLink
                     showModal={showModal}
                     handleCloseModal={handleCloseModal}
-                    userTags={tags}
                   />
                   <Button
                     variant="standard"
