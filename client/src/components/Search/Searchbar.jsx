@@ -19,13 +19,17 @@ import {
 } from "@mui/icons-material";
 import SearchItem from "./SearchItem";
 import { getAllLinksOfUser } from "../../services/links/getAllLinksofUser.service";
+import { LinksState } from "../../store/atoms/link.atom";
+import { useRecoilValue } from "recoil";
 
 const Searchbar = () => {
-  const [links, setLinks] = useState([]);
+  // const [links, setLinks] = useState([]);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [query, setQuery] = useState("");
+
+  const links = useRecoilValue(LinksState);
   // const [tagName, setTagName] = useState("");
   // const findLinksByTagName = async () => {
   //   try {
@@ -49,22 +53,7 @@ const Searchbar = () => {
   const toggleSearchBar = () => {
     setOpen(!open);
   };
-  const getLinksOfUser = async () => {
-    try {
-      const { isError, response } = await getAllLinksOfUser(
-        localStorage.getItem("userID"),
-        localStorage.getItem("token")
-      );
-      if (!isError) {
-        const userLinks = response.data;
-        setLinks(userLinks.reverse());
-      } else {
-        console.log("some error in get all links of user");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   const [isLinkFilter, setisLinkFilter] = useState(false);
   const [istitleFilter, setistitleFilter] = useState(false);
   const [isTagFilter, setisTagFilter] = useState(false);
@@ -111,7 +100,6 @@ const Searchbar = () => {
       }
     };
 
-    getLinksOfUser();
     // Add the event listener when the component mounts
     window.addEventListener("keydown", handleKeyDown);
     // Remove the event listener when the component unmounts

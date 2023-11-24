@@ -2,9 +2,13 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import LinkTableItem from "./LinkTableItem";
 import { getAllLinksOfUser } from "../../services/links/getAllLinksofUser.service";
+import { LinksState } from "../../store/atoms/link.atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const LinkTable = () => {
-  const [links, setLinks] = useState([]);
+  const links = useRecoilValue(LinksState);
+  const setLinks = useSetRecoilState(LinksState);
+  // const [links,setLinks] = useState([])
 
   const getLinksOfUser = async () => {
     try {

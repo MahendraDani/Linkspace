@@ -63,12 +63,6 @@ const LinkTableItem = ({ link }) => {
   const [selectedLink, setSelectedLink] = useState({});
   const getSelectedLink = async (linkID) => {
     try {
-      // const token = localStorage.getItem("token");
-      // const response = await axios.get(`${apiUrl}/api/users/links/${linkID}`, {
-      //   headers: {
-      //     authorization: localStorage.getItem("token"),
-      //   },
-      // });
       const { isError, response } = await getLinkByIdService(
         linkID,
         localStorage.getItem("token")

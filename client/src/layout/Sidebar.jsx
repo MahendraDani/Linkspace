@@ -6,6 +6,7 @@ import axios from "axios";
 import { AddLink, BookmarkAddOutlined } from "@mui/icons-material";
 import FormModal from "./modals/Form.modal";
 import { apiUrl } from "../config/apiEndpoints";
+import { getAllTagsOfUsersService } from "../services/tags/getAllTagsofUser.service";
 
 const Sidebar = ({
   handleOpenLinkTable,
@@ -32,15 +33,15 @@ const Sidebar = ({
   const [tags, setTags] = useState([]);
   const getTagsOfUsers = async () => {
     try {
-      const response = await axios.get(
-        `${apiUrl}/api/users/tags/all/${localStorage.getItem("userID")}`,
-        {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        }
+      const { isError, response } = await getAllTagsOfUsersService(
+        localStorage.getItem("userID"),
+        localStorage.getItem("token")
       );
-      setTags(response.data.tags);
+      if (!isError) {
+        setTags(response.data.tags);
+      } else {
+        console.log("some error in get all tags service");
+      }
     } catch (error) {
       console.log(error);
     }

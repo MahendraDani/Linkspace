@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Box, Button } from "@mui/material";
 import { getAllTagsOfUsersService } from "../../services/tags/getAllTagsofUser.service";
+import { TagsState } from "../../store/atoms/tag.atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const GetTags = () => {
-  const [tags, setTags] = useState([]);
+  // const [tags, setTags] = useState([]);
+  const tags = useRecoilValue(TagsState);
+  const setTags = useSetRecoilState(TagsState);
   const getTagsOfUsers = async () => {
     try {
       const { isError, response } = await getAllTagsOfUsersService(
